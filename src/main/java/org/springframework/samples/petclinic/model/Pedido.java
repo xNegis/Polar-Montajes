@@ -9,21 +9,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 
-public class Pedido extends BaseEntity{
-	
+public class Pedido extends BaseEntity {
+
 	@Column(name = "fecha")
 	@NotEmpty
 	private Date fecha;
+	@Column(name = "precio")
 	
-	@Column(name = "Precio")
 	@NotEmpty
 	private Double precio;
+	@Column(name = "pagado")
 	
-	@Column(name = "Pagado")
 	@NotEmpty
 	private Boolean pagado;
+	@Column(name = "precio_total")
 	
-	@Column(name = "PrecioTotal")
 	@NotEmpty
 	private Double precioTotal;
 	
