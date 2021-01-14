@@ -14,25 +14,25 @@ public class Pedido extends BaseEntity {
 	@Column(name = "fecha")
 	@NotEmpty
 	private Date fecha;
+
 	@Column(name = "precio")
-	
 	@NotEmpty
 	private Double precio;
+
 	@Column(name = "pagado")
-	
 	@NotEmpty
 	private Boolean pagado;
+
 	@Column(name = "precio_total")
-	
 	@NotEmpty
 	private Double precioTotal;
-	
+
 	@ManyToOne
 	private Trabajador trabajador;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
 	private Set<LineaPedido> lineaspedido;
-	
+
 	@ManyToOne
 	private Proveedor proveedor;
 
@@ -91,6 +91,5 @@ public class Pedido extends BaseEntity {
 	public void setProveedor(Proveedor proveedor) {
 		this.proveedor = proveedor;
 	}
-	
-	
+
 }
