@@ -40,7 +40,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class UserController {
 
-	private static final String VIEWS_OWNER_CREATE_FORM = "users/createOwnerForm";
+	private static final String VIEWS_OWNER_CREATE_FORM = "users/createUserForm";
 
 	private final UserService userService;
 	private final AuthoritiesService authoritiesService;
@@ -58,8 +58,8 @@ public class UserController {
 
 	@GetMapping(value = "/users/new")
 	public String initCreationForm(Map<String, Object> model) {
-		Owner owner = new Owner();
-		model.put("owner", owner);
+		User user = new User();
+		model.put("user", user);
 		return VIEWS_OWNER_CREATE_FORM;
 	}
 

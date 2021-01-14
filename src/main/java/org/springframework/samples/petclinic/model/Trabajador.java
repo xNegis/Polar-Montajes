@@ -38,13 +38,13 @@ public class Trabajador extends Person {
 	@Column(name="dni")
 	private String dni;
 	
-	@Column(name = "address")
+	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "address")
+	@Column(name = "direccion")
 	private String direccion;
 
-	@Column(name = "telephone")
+	@Column(name = "telefono")
 	private String telefono;
 
 	@Column(name = "es_gerente")

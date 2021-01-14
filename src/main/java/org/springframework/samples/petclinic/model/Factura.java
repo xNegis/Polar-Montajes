@@ -51,15 +51,12 @@ public class Factura extends BaseEntity {
 	@Column(name = "pagado")
 	private Boolean pagado;
 
-	@Column(name = "cliente")
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Cliente cliente;
 
-	@Column(name = "trabajador")
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Trabajador trabajador;
 	
-	@Column(name = "linea_factura")
 	@ManyToOne(cascade = CascadeType.ALL)
 	private LineaFactura lineaFactura;
 

@@ -35,11 +35,9 @@ public class LineaFactura extends BaseEntity {
 	@Column(name = "precio_unitario")
 	private Double precioUnitario;
 
-	@Column(name = "servicio")
 	@OneToOne(cascade = CascadeType.ALL)
 	private Servicio servicio;
 
-	@Column(name = "factura")
 	@ManyToOne
 	private Factura factura;
 
