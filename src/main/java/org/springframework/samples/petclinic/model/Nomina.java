@@ -64,7 +64,7 @@ public class Nomina extends BaseEntity {
 	private Integer horasExtra;
 	
 	@Column(name="precio_hora")
-	private Integer precioHora;
+	private Integer precioHora; 
 	
 	@Column(name="precio_hora_extra")
 	private Integer precioHoraExtra;
