@@ -44,7 +44,7 @@ import org.springframework.core.style.ToStringCreator;
  * @author Sam Brannen
  * @author Michael Isvy
  */
-@Entity
+@Entity 
 @Table(name = "nomina")
 public class Nomina extends BaseEntity {
 
