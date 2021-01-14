@@ -11,11 +11,10 @@
 	</h2>
 	
 	<c:if test="${facturas.size() == 0}">
-	<h2>¡No hay mensajes para tí! :<(</h2>
+	<h2>¡No hay facturas para tí! </h2>
 	</c:if>
 	
 	<c:if test="${facturas.size() > 0}">
-	<h2>¡No hay mensajes para tí! :<(</h2>
 
 	<table id="facturasTable" class="table table-striped">
 		<thead>
@@ -24,6 +23,7 @@
 				<th>Fecha Emision</th>
 				<th>Fecha vencimiento</th>
 				<th>IVA</th>
+				<th>Tipo de pago</th>
 				<th>Total con iva</th>
 				<th>Total sin iva</th>
 				<th>Pagada</th>
@@ -36,6 +36,7 @@
 					<td><c:out value="${factura.fechaEmision}" /></td>
 					<td><c:out value="${factura.fechaVencimiento}" /></td>
 					<td><c:out value="${factura.iva}" /></td>
+					<td><c:out value="${factura.pago}" /></td>
 					<td><c:out value="${factura.precioTotalConIva}" /></td>
 					<td><c:out value="${factura.precioTotalSinIva}" /></td>
 					<td><c:out value="${factura.pagado}" /></td>

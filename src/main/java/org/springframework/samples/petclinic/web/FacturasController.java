@@ -7,6 +7,7 @@ import org.springframework.samples.petclinic.service.ClienteService;
 import org.springframework.samples.petclinic.service.FacturasService;
 import org.springframework.samples.petclinic.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,17 +27,10 @@ public class FacturasController {
 	}
 
 	@GetMapping("/misfacturas")
-	public ModelAndView mostrarFacturasCliente() {
-		ModelAndView mav = new ModelAndView();
-		boolean esCliente = this.userService.getUserSession().getAuthorities().stream()
-				.anyMatch(x -> x.getAuthority().equals("cliente"));
-		if (esCliente) {
-			mav.setViewName("misfacturas");
-			mav.addObject("facturas", facturaService.getFacturaClienteByDni(this.userService.getUserSession().getDni()));
-		} else {
-			mav.setViewName("welcome.jsp");
-		}
-		return mav;
+	public String listadoFacturasCliente(ModelMap modelMap) {
+System.out.println(userService.getUserSession().getDni());
+		modelMap.addAttribute("facturas", facturaService.getFacturaClienteByDni(userService.getUserSession().getDni()));
+		return "clientes/misfacturas";
 	}
 
 }

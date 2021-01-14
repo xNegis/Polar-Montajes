@@ -51,6 +51,10 @@ public class TrabajadoresService {
 	public Optional<Trabajador> findTrabajador(Integer id) {
 		return trabajadoresRepository.findById(id);
 	}
+
+	public Trabajador getTrabajadorByDni(String dni) {
+		return trabajadoresRepository.getTrabajadorByDni(dni);
+	}
 	
 	
 }

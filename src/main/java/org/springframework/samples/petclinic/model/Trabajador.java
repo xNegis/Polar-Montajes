@@ -146,13 +146,5 @@ public class Trabajador extends Person {
 		this.servicio = servicio;
 	}
 
-	@Override
-	public String toString() {
-		return "Trabajador [dni=" + dni + ", email=" + email + ", direccion=" + direccion + ", telefono=" + telefono
-				+ ", esGerente=" + esGerente + ", nominas=" + nominas + ", pedidos=" + pedidos + ", vacaciones="
-				+ vacaciones + ", facturas=" + facturas + ", servicio=" + servicio + "]";
-	}
-	
-	
-	
+
 }

@@ -23,4 +23,8 @@ public class ClienteService {
 		return this.clienteRepository.findAll();
 	}
 
+	public Cliente getClienteByDni(String dni) {
+		return clienteRepository.getClienteByDni(dni);
+	}
+
 }

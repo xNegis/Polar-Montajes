@@ -21,23 +21,43 @@
 		</div>
 		<div class="navbar-collapse collapse" id="main-navbar">
 			<ul class="nav navbar-nav">
-
+			
+				<sec:authorize access="isAnonymous()">
 				<petclinic:menuItem active="${name eq 'home'}" url="/"
 					title="home page">
 					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-					<span>Home</span>
+					<span>Página Principal</span>
 				</petclinic:menuItem>
+				</sec:authorize>
+				
+				<sec:authorize access="hasAuthority('cliente')">
+					<petclinic:menuItem active="${name eq 'homeclient'}" url="/welcomeCliente"
+					title="home page clientes">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Página Principal</span>
+				</petclinic:menuItem>
+					</sec:authorize>
+					
+					<sec:authorize access="hasAuthority('trabajador')">
+					<petclinic:menuItem active="${name eq 'homeworker'}" url="/welcomeTrabajador"
+					title="home page trabajador">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Página Principal</span>
+				</petclinic:menuItem>
+					</sec:authorize>
+				
+				
 
-				<petclinic:menuItem active="${name eq 'owners'}" url="/owners/find"
-					title="find owners">
+				<petclinic:menuItem active="${name eq 'servicios'}" url="/misservicios"
+					title="mis servicios">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Find owners</span>
+					<span>Mis servicios</span>
 				</petclinic:menuItem>
 
-				<petclinic:menuItem active="${name eq 'vets'}" url="/vets"
-					title="veterinarians">
+				<petclinic:menuItem active="${name eq 'facturas'}" url="/misfacturas"
+					title="mis facturas">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-					<span>Veterinarians</span>
+					<span>Mis facturas</span>
 				</petclinic:menuItem>
 
 				<petclinic:menuItem active="${name eq 'error'}" url="/oups"
