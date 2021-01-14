@@ -25,6 +25,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -43,7 +44,7 @@ import org.springframework.core.style.ToStringCreator;
  * @author Sam Brannen
  * @author Michael Isvy
  */
-@Entity
+@Entity 
 @Table(name = "nomina")
 public class Nomina extends BaseEntity {
 
@@ -63,13 +64,91 @@ public class Nomina extends BaseEntity {
 	private Integer horasExtra;
 	
 	@Column(name="precio_hora")
-	private Integer precioHora;
+	private Integer precioHora; 
 	
 	@Column(name="precio_hora_extra")
 	private Integer precioHoraExtra;
 	
 	@Column(name = "mes_año")
 	private String mesAño;
+	
+	@ManyToOne
+	@JoinColumn(name = "trabajador")
+	private Trabajador trabajador;
+
+	public Integer getSueldoNeto() {
+		return sueldoNeto;
+	}
+
+	public void setSueldoNeto(Integer sueldoNeto) {
+		this.sueldoNeto = sueldoNeto;
+	}
+
+	public Integer getSueldoBruto() {
+		return sueldoBruto;
+	}
+
+	public void setSueldoBruto(Integer sueldoBruto) {
+		this.sueldoBruto = sueldoBruto;
+	}
+
+	public Double getRetenciones() {
+		return retenciones;
+	}
+
+	public void setRetenciones(Double retenciones) {
+		this.retenciones = retenciones;
+	}
+
+	public Integer getHorasTrabajadas() {
+		return horasTrabajadas;
+	}
+
+	public void setHorasTrabajadas(Integer horasTrabajadas) {
+		this.horasTrabajadas = horasTrabajadas;
+	}
+
+	public Integer getHorasExtra() {
+		return horasExtra;
+	}
+
+	public void setHorasExtra(Integer horasExtra) {
+		this.horasExtra = horasExtra;
+	}
+
+	public Integer getPrecioHora() {
+		return precioHora;
+	}
+
+	public void setPrecioHora(Integer precioHora) {
+		this.precioHora = precioHora;
+	}
+
+	public Integer getPrecioHoraExtra() {
+		return precioHoraExtra;
+	}
+
+	public void setPrecioHoraExtra(Integer precioHoraExtra) {
+		this.precioHoraExtra = precioHoraExtra;
+	}
+
+	public String getMesAño() {
+		return mesAño;
+	}
+
+	public void setMesAño(String mesAño) {
+		this.mesAño = mesAño;
+	}
+
+	public Trabajador getTrabajador() {
+		return trabajador;
+	}
+
+	public void setTrabajador(Trabajador trabajador) {
+		this.trabajador = trabajador;
+	}
+	
+	
 	
 	
 		
