@@ -15,48 +15,76 @@
  */
 package org.springframework.samples.petclinic.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotEmpty;
 
-import org.springframework.beans.support.MutableSortDefinition;
-import org.springframework.beans.support.PropertyComparator;
-import org.springframework.core.style.ToStringCreator;
-
-/**
- * Simple JavaBean domain object representing an owner.
- *
- * @author Ken Krebs
- * @author Juergen Hoeller
- * @author Sam Brannen
- * @author Michael Isvy
- */
 @Entity
-@Table(name = "nomina")
+@Table(name = "linea_factura")
 public class LineaFactura extends BaseEntity {
 
-	@Column(name="sueldo_neto")
+	@Column(name = "cantidad")
 	private Integer cantidad;
-	
-	@Column(name="sueldo_bruto")
+
+	@Column(name = "descripcion")
 	private String descripcion;
-	
-	@Column(name="precio_unitario")
+
+	@Column(name = "precio_unitario")
 	private Double precioUnitario;
-	
-	@Column(name="precio_total")
-	private Double precioTotal;
-	
+
+	@Column(name = "servicio")
+	@OneToOne(cascade = CascadeType.ALL)
+	private Servicio servicio;
+
+	@Column(name = "factura")
+	@ManyToOne
+	private Factura factura;
+
+	public Integer getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Double getPrecioUnitario() {
+		return precioUnitario;
+	}
+
+	public void setPrecioUnitario(Double precioUnitario) {
+		this.precioUnitario = precioUnitario;
+	}
+
+	public Double getPrecioTotal() {
+		return this.cantidad * this.precioUnitario;
+	}
+
+	public Servicio getServicio() {
+		return servicio;
+	}
+
+	public void setServicio(Servicio servicio) {
+		this.servicio = servicio;
+	}
+
+	public Factura getFactura() {
+		return factura;
+	}
+
+	public void setFactura(Factura factura) {
+		this.factura = factura;
+	}
+
 }

@@ -1,19 +1,70 @@
 package org.springframework.samples.petclinic.model;
 
+import java.time.LocalDate;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
 public class Servicio extends BaseEntity {
 
-//	@Column(name = "birth_date")        
-//	@DateTimeFormat(pattern = "yyyy/MM/dd")
-	private Integer tiempoEmpleado;
+	@Column(name = "tiempo_empleado")
+	private Double tiempoEmpleado;
 
-//	@ManyToOne
-//	@JoinColumn(name = "type_id")
-	private String fechaInicio;
+	@Column(name = "fecha_inicio")
+	@NotNull
+	private LocalDate fechaInicio;
 
-//	@ManyToOne
-//	@JoinColumn(name = "owner_id")
-	private Integer fechaFin;
+	@Column(name = "fecha_fin")
+	private LocalDate fechaFin;
 
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)
-	private TipoServicio tipoServicio;	
+	@Column(name = "tipoServcio")
+	@NotNull
+	private TipoServicio tipoServicio;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@NotNull
+	private Cliente cliente;
+
+	public Double getTiempoEmpleado() {
+		return tiempoEmpleado;
+	}
+
+	public void setTiempoEmpleado(Double tiempoEmpleado) {
+		this.tiempoEmpleado = tiempoEmpleado;
+	}
+
+	public LocalDate getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public void setFechaInicio(LocalDate fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public LocalDate getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(LocalDate fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+	public TipoServicio getTipoServicio() {
+		return tipoServicio;
+	}
+
+	public void setTipoServicio(TipoServicio tipoServicio) {
+		this.tipoServicio = tipoServicio;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 }

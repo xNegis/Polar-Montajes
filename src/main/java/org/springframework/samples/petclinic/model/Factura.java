@@ -15,138 +15,97 @@
  */
 package org.springframework.samples.petclinic.model;
 
-import org.springframework.beans.support.MutableSortDefinition;
-import org.springframework.beans.support.PropertyComparator;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-/**
- * Simple business object representing a pet.
- *
- * @author Ken Krebs
- * @author Juergen Hoeller
- * @author Sam Brannen
- */
 @Entity
-@Table(name = "facturas")  
+@Table(name = "facturas")
 public class Factura extends BaseEntity {
 
-	@Column(name = "precioTotalSinIva")        
+	@Column(name = "precioTotalSinIva")
 	private Double precioTotalSinIva;
 
-	
-	@Column(name = "iva")        
+	@Column(name = "iva")
 	private int iva;
 
-	
-	@Column(name = "precioTotalConIva")        
+	@Column(name = "precioTotalConIva")
 	private Double precioTotalConIva;
-	
-	@Column(name = "pago")        
+
+	@Column(name = "pago")
 	private Pago pago;
 
-	
-	@Column(name = "fechaVencimiento")        
+	@Column(name = "fechaVencimiento")
 	private LocalDate fechaVencimiento;
-	
-	
 
-	@Column(name = "fechaEmision")        
+	@Column(name = "fechaEmision")
 	private LocalDate fechaEmision;
-	
 
-	@Column(name = "pagado")        
+	@Column(name = "pagado")
 	private Boolean pagado;
 
+	@Column(name = "cliente")
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Cliente cliente;
 
 	public Double getPrecioTotalSinIva() {
 		return precioTotalSinIva;
 	}
 
-
 	public void setPrecioTotalSinIva(Double precioTotalSinIva) {
 		this.precioTotalSinIva = precioTotalSinIva;
 	}
-
 
 	public int getIva() {
 		return iva;
 	}
 
-
 	public void setIva(int iva) {
 		this.iva = iva;
 	}
-
 
 	public Double getPrecioTotalConIva() {
 		return precioTotalConIva;
 	}
 
-
 	public void setPrecioTotalConIva(Double precioTotalConIva) {
 		this.precioTotalConIva = precioTotalConIva;
 	}
-
 
 	public Pago getPago() {
 		return pago;
 	}
 
-
 	public void setPago(Pago pago) {
 		this.pago = pago;
 	}
-
 
 	public LocalDate getFechaVencimiento() {
 		return fechaVencimiento;
 	}
 
-
 	public void setFechaVencimiento(LocalDate fechaVencimiento) {
 		this.fechaVencimiento = fechaVencimiento;
 	}
-
 
 	public LocalDate getFechaEmision() {
 		return fechaEmision;
 	}
 
-
 	public void setFechaEmision(LocalDate fechaEmision) {
 		this.fechaEmision = fechaEmision;
 	}
-
 
 	public Boolean getPagado() {
 		return pagado;
 	}
 
-
 	public void setPagado(Boolean pagado) {
 		this.pagado = pagado;
 	}
-	
-
-
-	
 
 }

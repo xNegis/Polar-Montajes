@@ -28,4 +28,36 @@ public class Cliente extends Person {
 	@NotEmpty
 	private String direccion;
 
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public Integer getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(Integer telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
 }
