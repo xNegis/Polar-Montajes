@@ -15,18 +15,13 @@
  */
 package org.springframework.samples.petclinic.service;
 
-
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Factura;
-import org.springframework.samples.petclinic.model.Trabajador;
-import org.springframework.samples.petclinic.model.User;
 import org.springframework.samples.petclinic.repository.FacturaRepository;
-import org.springframework.samples.petclinic.repository.TrabajadoresRepository;
-import org.springframework.samples.petclinic.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,18 +42,20 @@ public class FacturasService {
 	}
 
 	@Transactional
-	public void saveTrabajador(Factura factura) throws DataAccessException {
-		facturaRepository.save(factura);	
+	public void saveFactura(Factura factura) throws DataAccessException {
+		facturaRepository.save(factura);
 	}
-	
+
 	public Optional<Factura> findFactura(Integer id) {
 		return facturaRepository.findById(id);
 	}
 
 	public List<Factura> getFacturaClienteByDni(String dni) {
 		return facturaRepository.findFacturasByDniCliente(dni);
-
 	}
-	
-	
+
+	public List<Factura> getFacturas() {
+		return facturaRepository.findAll();
+	}
+
 }
