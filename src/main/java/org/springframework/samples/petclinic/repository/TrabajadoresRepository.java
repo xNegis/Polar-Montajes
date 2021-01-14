@@ -11,8 +11,10 @@ import org.springframework.samples.petclinic.model.Nomina;
 import org.springframework.samples.petclinic.model.Trabajador;
 
 public interface TrabajadoresRepository extends CrudRepository<Trabajador, Integer>{
+
 	List<Trabajador> findAll() throws DataAccessException;
 	
 	@Query("SELECT trabajador FROM Trabajador trabajador  WHERE trabajador.dni LIKE :dni")
 	Trabajador getTrabajadorByDni(@Param("dni") String dni);
+
 }
