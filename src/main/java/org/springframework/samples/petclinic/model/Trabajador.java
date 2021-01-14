@@ -106,6 +106,7 @@ public class Trabajador extends Person {
 		this.esGerente = esGerente;
 	}
 
+
 	public Set<Nomina> getNominas() {
 		return nominas;
 	}
@@ -146,6 +147,7 @@ public class Trabajador extends Person {
 		this.servicio = servicio;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Trabajador [dni=" + dni + ", email=" + email + ", direccion=" + direccion + ", telefono=" + telefono
@@ -154,3 +156,4 @@ public class Trabajador extends Person {
 	
 	
 }
+

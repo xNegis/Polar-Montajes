@@ -24,8 +24,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import java.time.LocalDate;
-
 @Entity
 @Table(name = "factura")
 public class Factura extends BaseEntity {
@@ -43,10 +41,8 @@ public class Factura extends BaseEntity {
 	@Column(name = "pago")
 	private Pago pago;
 
-
 	@Column(name = "fecha_vencimiento")
 	private String fechaVencimiento;
-
 
 	@Column(name = "fecha_emision")
 	private String fechaEmision;
@@ -55,14 +51,13 @@ public class Factura extends BaseEntity {
 	private Boolean pagado;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cliente")
+	@JoinColumn(name = "cliente")
 	private Cliente cliente;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "trabajador")
+	@JoinColumn(name = "trabajador")
 	private Trabajador trabajador;
-	
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	private LineaFactura lineaFactura;
 
@@ -154,6 +149,4 @@ public class Factura extends BaseEntity {
 				+ ", lineaFactura=" + lineaFactura + "]";
 	}
 
-	
-	
 }

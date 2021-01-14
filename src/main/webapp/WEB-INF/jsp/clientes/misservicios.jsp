@@ -7,15 +7,14 @@
 
 <petclinic:layout pageName="misfacturas">
 	<h2>
-		Mis facturas
+		Mis servicios
 	</h2>
 	
 	<c:if test="${servicios.size() == 0}">
-	<h2>¡No hay mensajes para tí! :<(</h2>
+	<h2>¡No hay servicios asociados! :<(</h2>
 	</c:if>
 	
 	<c:if test="${servicios.size() > 0}">
-	<h2>¡No hay mensajes para tí! :<(</h2>
 
 	<table id="facturasTable" class="table table-striped">
 		<thead>
@@ -33,12 +32,12 @@
 			<c:forEach items="${servicios}" var="servicio">
 				<tr>
 					<td><c:out value="${servicio.id}" /></td>
-					<td><c:out value="${servicio.tiempo_empleado}" /></td>
-					<td><c:out value="${servicio.fecha_inicio}" /></td>
-					<td><c:out value="${servicio.fecha_fin}" /></td>
-					<td><c:out value="${servicio.tipoServcio}" /></td>
-					<td><c:out value="${servicio.cliente}" /></td>
-					<td><c:out value="${servicio.trabajador}" /></td>
+					<td><c:out value="${servicio.tiempoEmpleado}" /></td>
+					<td><c:out value="${servicio.fechaInicio}" /></td>
+					<td><c:out value="${servicio.fechaFin}" /></td>
+					<td><c:out value="${servicio.tipoServicio}" /></td>
+					<td><c:out value="${servicio.cliente.firstName} ${servicio.cliente.lastName}" /></td>
+					<td><c:out value="${servicio.trabajador.firstName} ${servicio.trabajador.lastName}" /></td>
 				</tr>
 			</c:forEach>
 		</tbody>
