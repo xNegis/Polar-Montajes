@@ -34,4 +34,5 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<spring:url value=""></spring:url>
 </petclinic:layout>
