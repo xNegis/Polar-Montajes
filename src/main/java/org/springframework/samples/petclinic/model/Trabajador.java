@@ -133,11 +133,18 @@ public class Trabajador extends Person {
 	}
 
 
+
 //	@Override
 //	public String toString() {
 //		return "Trabajador [dni=" + dni + ", email=" + email + ", direccion=" + direccion + ", telefono=" + telefono
 //				+ ", esGerente=" + esGerente +"]";
 //	}	
+
+
+
+	
+	
+
 }
 
 
