@@ -38,6 +38,9 @@ INSERT INTO authorities(id,username,authority) VALUES (11,'cliente','cliente');
 INSERT INTO users(username,password,enabled) VALUES ('trabajador','trabajador',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (11,'trabajador','trabajador');
 
+INSERT INTO trabajador(name,dni, email, direccion, telefono, es_gerente)
+
+INSERT INTO periodo_vacaciones(fechaInicio, fechaFin, vacaciones, trabajador) VALUES ('2020/08/16','2020/09/01', 'VERANO', '11');
 
 
 

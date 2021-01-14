@@ -17,43 +17,43 @@ public class PeriodoVacaciones extends BaseEntity {
 	
 	@Column(name = "FechaInicio")
 	@NotEmpty
-	protected Date fechaInicio;
+	protected String fechaInicio;
 	
 	@Column(name = "FechaFin")
 	@NotEmpty
-	protected Date fechaFin;
+	protected String fechaFin;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "Vacaciones")
 	@NotEmpty
-	protected Vacaciones Vacaciones;
+	protected Vacaciones vacaciones;
 	
 	@ManyToOne
 	@JoinColumn(name = "trabajador")
 	private Trabajador trabajador;
 
-	public Date getFechaInicio() {
+	public String getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(String fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public Date getFechaFin() {
+	public String getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(String fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
 	public Vacaciones getVacaciones() {
-		return Vacaciones;
+		return vacaciones;
 	}
 
 	public void setVacaciones(Vacaciones vacaciones) {
-		Vacaciones = vacaciones;
+		vacaciones = vacaciones;
 	}
 
 	public Trabajador getTrabajador() {
@@ -66,7 +66,7 @@ public class PeriodoVacaciones extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "PeriodoVacaciones [fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", Vacaciones=" + Vacaciones
+		return "PeriodoVacaciones [fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", Vacaciones=" + vacaciones
 				+ ", trabajador=" + trabajador + "]";
 	}
 
