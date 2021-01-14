@@ -58,6 +58,7 @@ public class TrabajadoresController {
 		System.out.println(listaTrabajadores);
 		model.put("trabajadores", listaTrabajadores);
 		return "trabajadores/listaTrabajadores";
+		
 	}
 	
 	@GetMapping(value = "/trabajadores/nuevoTrabajador")

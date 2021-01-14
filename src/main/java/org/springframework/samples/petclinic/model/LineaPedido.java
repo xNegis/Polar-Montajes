@@ -60,10 +60,13 @@ public class LineaPedido extends BaseEntity {
 		this.producto = producto;
 	}
 
+	public void setLineaPedido(Pedido pedido) {
+		this.pedido=pedido;
+	}
 	@Override
 	public String toString() {
-		return "LineaPedido [cantidad=" + cantidad + ", descripcion=" + descripcion + ", pedido=" + pedido
-				+ ", producto=" + producto + "]";
+		return "LineaPedido [cantidad=" + cantidad + ", descripcion=" + descripcion 
+				+ "]";
 	}
 
 	

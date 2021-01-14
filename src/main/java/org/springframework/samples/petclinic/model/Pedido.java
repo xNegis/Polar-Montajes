@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.model;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -17,15 +18,12 @@ import javax.validation.constraints.NotEmpty;
 public class Pedido extends BaseEntity {
 
 	@Column(name = "fecha")
-	@NotEmpty
 	private String fecha;
 
 	@Column(name = "precio")
-	@NotEmpty
 	private Double precio;
 
 	@Column(name = "pagado")
-	@NotEmpty
 	private Boolean pagado;
 
 	@ManyToOne
@@ -86,11 +84,17 @@ public class Pedido extends BaseEntity {
 	public void setProveedor(Proveedor proveedor) {
 		this.proveedor = proveedor;
 	}
-
+	public void addLineaPedido(LineaPedido x) {
+		if(this.lineaspedido.isEmpty()) {
+			this.lineaspedido = new HashSet<LineaPedido>();
+		}
+		this.lineaspedido.add(x);
+	}
+	
 	@Override
 	public String toString() {
 		return "Pedido [fecha=" + fecha + ", precio=" + precio + ", pagado=" + pagado 
-				+ ", trabajador=" + trabajador + ", lineaspedido=" + lineaspedido + ", proveedor=" + proveedor + "]";
+				+  "]";
 	}
 
 	
