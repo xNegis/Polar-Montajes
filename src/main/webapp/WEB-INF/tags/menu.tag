@@ -45,7 +45,38 @@
 					<span>Página Principal</span>
 				</petclinic:menuItem>
 					</sec:authorize>
+					
+					<sec:authorize access="hasAuthority('gerente')">
+					<petclinic:menuItem active="${name eq 'homeworker'}" url="/welcomeTrabajador"
+					title="home page trabajador">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Página Principal</span>
+				</petclinic:menuItem>
+					</sec:authorize>
 				
+				<sec:authorize access="hasAuthority('gerente')">
+					<petclinic:menuItem active="${name eq 'misnominas'}" url="/misnominas"
+					title="misnóminas">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Mis nóminas</span>
+				</petclinic:menuItem>
+					</sec:authorize>
+					
+					<sec:authorize access="hasAuthority('gerente')">
+					<petclinic:menuItem active="${name eq 'nominas'}" url="/nominas"
+					title="nóminas">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Nóminas</span>
+				</petclinic:menuItem>
+					</sec:authorize>
+					
+					<sec:authorize access="hasAuthority('trabajador')">
+					<petclinic:menuItem active="${name eq 'misnominas'}" url="/misnominas"
+					title="misnóminas">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Mis nóminas</span>
+				</petclinic:menuItem>
+					</sec:authorize>
 				
 				<sec:authorize access="hasAuthority('cliente')">
 
@@ -75,6 +106,14 @@
 					title="Contact page">
 					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 					<span>Contacto</span>
+				</petclinic:menuItem>
+				</sec:authorize>
+				
+				<sec:authorize access="hasAuthority('gerente')">
+				<petclinic:menuItem active="${name eq 'listatrabajadores'}" url="/trabajadores"
+					title="trabajadores">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					<span>Trabajadores</span>
 				</petclinic:menuItem>
 				</sec:authorize>
 

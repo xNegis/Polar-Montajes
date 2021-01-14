@@ -6,7 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
-<petclinic:layout pageName="misfacturas">
+<petclinic:layout pageName="listatrabajadores">
 	<h2>
 		Lista trabajadores
 	</h2>

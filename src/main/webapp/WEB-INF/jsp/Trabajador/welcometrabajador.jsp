@@ -12,7 +12,19 @@
 		
 		<p>Nombre: ${usuario.firstName} ${usuario.lastName} </p>
 		<p>Telefono: ${usuario.telefono} </p>
-		<p>Correo electronico: ${usuario.correo} </p>
+		<p>Correo electronico: ${usuario.email} </p>
+		<p>Dni: ${usuario.dni} </p>
+		<p>Dirección: ${usuario.direccion} </p>
+		
+	</sec:authorize>
+	
+	 <sec:authorize access="hasAuthority('gerente')">
+		<h3>TUS DATOS COMO TRABAJADOR</h3>
+		
+		
+		<p>Nombre: ${usuario.firstName} ${usuario.lastName} </p>
+		<p>Telefono: ${usuario.telefono} </p>
+		<p>Correo electronico: ${usuario.email} </p>
 		<p>Dni: ${usuario.dni} </p>
 		<p>Dirección: ${usuario.direccion} </p>
 		
