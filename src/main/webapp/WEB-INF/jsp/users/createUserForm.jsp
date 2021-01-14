@@ -13,6 +13,7 @@
     <form:form modelAttribute="user" class="form-horizontal" id="add-owner-form">
         <div class="form-group has-feedback">
             <petclinic:inputField label="Username " name="username"/>
+            <petclinic:inputField label="DNI" name="dni"/>
             <petclinic:inputField label="Password" name="password"/>
        
         </div>

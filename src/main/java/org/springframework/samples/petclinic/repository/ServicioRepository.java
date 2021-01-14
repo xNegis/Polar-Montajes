@@ -19,8 +19,10 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
+import org.springframework.samples.petclinic.model.Factura;
 import org.springframework.samples.petclinic.model.PeriodoVacaciones;
 import org.springframework.samples.petclinic.model.Servicio;
 import org.springframework.samples.petclinic.model.Vet;
@@ -43,5 +45,6 @@ public interface ServicioRepository extends CrudRepository<Servicio, Integer>{
 	 * @return a <code>Collection</code> of <code>Vet</code>s
 	 */
 	List<Servicio> findAll() throws DataAccessException;
-
+	@Query("SELECT servicio FROM Servicio servicio  WHERE servicio.cliente.dni LIKE :dni")
+	List<Servicio> findServiciosByDniCliente(String dni);
 }

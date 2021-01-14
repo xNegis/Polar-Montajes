@@ -48,5 +48,8 @@ public interface FacturaRepository extends CrudRepository<Factura, Integer>{
 	 */
 	List<Factura> findAll() throws DataAccessException;
 
+	@Query("SELECT factura FROM Factura factura  WHERE factura.cliente.dni LIKE :dni")
+	List<Factura> findFacturasByDniCliente(String dni);
+
 	
 }
