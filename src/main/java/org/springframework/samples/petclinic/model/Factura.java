@@ -43,10 +43,10 @@ public class Factura extends BaseEntity {
 	private Pago pago;
 
 	@Column(name = "fechaVencimiento")
-	private LocalDate fechaVencimiento;
+	private String fechaVencimiento;
 
 	@Column(name = "fechaEmision")
-	private LocalDate fechaEmision;
+	private String fechaEmision;
 
 	@Column(name = "pagado")
 	private Boolean pagado;
@@ -92,19 +92,19 @@ public class Factura extends BaseEntity {
 		this.pago = pago;
 	}
 
-	public LocalDate getFechaVencimiento() {
+	public String getFechaVencimiento() {
 		return fechaVencimiento;
 	}
 
-	public void setFechaVencimiento(LocalDate fechaVencimiento) {
+	public void setFechaVencimiento(String fechaVencimiento) {
 		this.fechaVencimiento = fechaVencimiento;
 	}
 
-	public LocalDate getFechaEmision() {
+	public String getFechaEmision() {
 		return fechaEmision;
 	}
 
-	public void setFechaEmision(LocalDate fechaEmision) {
+	public void setFechaEmision(String fechaEmision) {
 		this.fechaEmision = fechaEmision;
 	}
 
