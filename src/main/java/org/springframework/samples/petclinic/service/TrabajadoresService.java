@@ -16,6 +16,8 @@
 package org.springframework.samples.petclinic.service;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +54,10 @@ public class TrabajadoresService {
 		return trabajadoresRepository.findById(id);
 	}
 	
+	public List<Trabajador> findAll(){
+		List<Trabajador> trabajador= new ArrayList<Trabajador>();
+		this.trabajadoresRepository.findAll().forEach(trabajador::add);
+		return trabajador;
+		}
 	
 }

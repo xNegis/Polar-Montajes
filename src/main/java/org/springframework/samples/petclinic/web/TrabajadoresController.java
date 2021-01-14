@@ -15,14 +15,17 @@
  */
 package org.springframework.samples.petclinic.web;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Owner;
+import org.springframework.samples.petclinic.model.Trabajador;
 import org.springframework.samples.petclinic.service.AuthoritiesService;
 import org.springframework.samples.petclinic.service.OwnerService;
+import org.springframework.samples.petclinic.service.TrabajadoresService;
 import org.springframework.samples.petclinic.service.VetService;
 import org.springframework.samples.petclinic.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -41,32 +44,37 @@ public class TrabajadoresController {
 
 	private static final String VIEWS_OWNER_CREATE_FORM = "users/createOwnerForm";
 
-	private final OwnerService ownerService;
+	private final TrabajadoresService trabajadoresService;
 
 	@Autowired
-	public TrabajadoresController(OwnerService clinicService) {
-		this.ownerService = clinicService;
+	public TrabajadoresController(TrabajadoresService trabajadoresService) {
+		this.trabajadoresService = trabajadoresService;
 	}
 
-//
-//
-//	@GetMapping(value = "/users/new")
-//	public String initCreationForm(Map<String, Object> model) {
-//		Owner owner = new Owner();
-//		model.put("owner", owner);
-//		return VIEWS_OWNER_CREATE_FORM;
-//	}
-//
-//	@PostMapping(value = "/users/new")
-//	public String processCreationForm(@Valid Owner owner, BindingResult result) {
-//		if (result.hasErrors()) {
-//			return VIEWS_OWNER_CREATE_FORM;
-//		}
-//		else {
-//			//creating owner, user, and authority
-//			this.ownerService.saveOwner(owner);
-//			return "redirect:/";
-//		}
-//	}
+
+	@GetMapping(value = "/trabajadores")
+	public String initCreationForm(Map<String, Object> model) {
+		List<Trabajador> listaTrabajadores = trabajadoresService.findAll();
+		System.out.println(listaTrabajadores);
+		model.put("trabajadores", listaTrabajadores);
+		return "trabajadores/listaTrabajadores";
+	}
+	
+	@GetMapping(value = "/trabajadores/nuevoTrabajador")
+	public String nuevoTrabajador(Map<String, Object> model) {
+		
+		model.put("trabajador", new Trabajador());
+		return "trabajadores/nuevoTrabajador";
+	}
+
+	
+	@PostMapping(value = "/trabajadores/nuevoTrabajador")
+	public String nuevoTrabajador2(Trabajador trabajador,Map<String, Object> model) {
+		this.trabajadoresService.saveTrabajador(trabajador);
+		return "redirect:/trabajadores";
+	}
+	
+
+
 
 }
