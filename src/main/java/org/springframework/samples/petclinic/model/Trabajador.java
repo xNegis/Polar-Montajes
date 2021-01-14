@@ -105,6 +105,7 @@ public class Trabajador extends Person {
 	public void setEsGerente(Boolean esGerente) {
 		this.esGerente = esGerente;
 	}
+}
 
 //	public Set<Nomina> getNominas() {
 //		return nominas;
@@ -146,12 +147,4 @@ public class Trabajador extends Person {
 //		this.servicio = servicio;
 //	}
 
-	@Override
-	public String toString() {
-		return "Trabajador [dni=" + dni + ", email=" + email + ", direccion=" + direccion + ", telefono=" + telefono
-				+ ", esGerente=" + esGerente +"]";
-	}
-//	
-	
-	
-}
+

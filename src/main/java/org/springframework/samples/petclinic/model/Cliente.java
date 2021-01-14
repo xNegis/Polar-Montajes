@@ -86,11 +86,7 @@ public class Cliente extends Person {
 		this.servicio = servicio;
 	}
 
-	@Override
-	public String toString() {
-		return "Cliente [dni=" + dni + ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion
-				+ ", facturas=" + facturas + ", servicio=" + servicio + "]";
-	}
+
 	
 	
 }

@@ -23,10 +23,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.User;
 import org.springframework.samples.petclinic.service.AuthoritiesService;
+import org.springframework.samples.petclinic.service.ClienteService;
 import org.springframework.samples.petclinic.service.OwnerService;
+import org.springframework.samples.petclinic.service.TrabajadoresService;
 import org.springframework.samples.petclinic.service.VetService;
 import org.springframework.samples.petclinic.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -44,11 +47,16 @@ public class UserController {
 
 	private final UserService userService;
 	private final AuthoritiesService authoritiesService;
+	private final ClienteService clienteService;
+	private final TrabajadoresService trabajadorService;
+
 
 	@Autowired
-	public UserController(UserService userService,AuthoritiesService authoritiesService) {
+	public UserController(UserService userService,AuthoritiesService authoritiesService,ClienteService clienteService,TrabajadoresService trabajadorService) {
 		this.userService = userService;
 		this.authoritiesService = authoritiesService;
+		this.clienteService = clienteService;
+		this.trabajadorService = trabajadorService;
 	}
 
 	@InitBinder
@@ -73,8 +81,23 @@ public class UserController {
 			this.userService.saveUser(user);
 			
 			authoritiesService.saveAuthorities(user.getUsername(), "cliente");
-			return "redirect:/";
+			return "redirect:/welcome";
 		}
 	}
+	
+	  
+	  @GetMapping({"/welcomeCliente"})
+	  public String welcomeCliente(ModelMap modelMap) {	    
+			modelMap.addAttribute("usuario", clienteService.getClienteByDni(userService.getUserSession().getUsername()));
+
+	    return "clientes/welcomecliente";
+	  }
+	  
+	  @GetMapping({"/welcomeTrabajador"})
+	  public String welcomeTrabajador(ModelMap modelMap) {	    
+			modelMap.addAttribute("usuario", trabajadorService.getTrabajadorByDni(userService.getUserSession().getUsername()));
+
+	    return "Trabajador/welcometrabajador";
+	  }
 
 }
