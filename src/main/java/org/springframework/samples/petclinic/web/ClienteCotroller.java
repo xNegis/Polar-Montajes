@@ -1,8 +1,6 @@
 package org.springframework.samples.petclinic.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.petclinic.model.Cliente;
-import org.springframework.samples.petclinic.model.User;
 import org.springframework.samples.petclinic.service.ClienteService;
 import org.springframework.samples.petclinic.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -25,14 +23,14 @@ public class ClienteCotroller {
 	@GetMapping("/clientes")
 	public ModelAndView mostrarClientes() {
 		ModelAndView mav = new ModelAndView();
-//		boolean esAdmin = this.userService.getUserSession().getAuthorities().stream()
-//				.anyMatch(x -> x.getAuthority().equals("admin"));
-//		if (esAdmin) {
-		mav.setViewName("clientes.jsp");
-		mav.addObject("clientes", clienteService.getAllClientes());
-//		} else {
-//			mav.setViewName("welcome.jsp");
-//		}
+		boolean esAdmin = this.userService.getUserSession().getAuthorities().stream()
+				.anyMatch(x -> x.getAuthority().equals("gerente") || x.getAuthority().equals("trabajador"));
+		if (esAdmin) {
+			mav.setViewName("clientes/clientes");
+			mav.addObject("clientes", clienteService.getAllClientes());
+		} else {
+			mav.setViewName("welcome");
+		}
 		return mav;
 	}
 
