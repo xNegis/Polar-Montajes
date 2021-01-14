@@ -15,25 +15,13 @@
  */
 package org.springframework.samples.petclinic.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotEmpty;
-
-import org.springframework.beans.support.MutableSortDefinition;
-import org.springframework.beans.support.PropertyComparator;
-import org.springframework.core.style.ToStringCreator;
 
 /**
  * Simple JavaBean domain object representing an owner.
@@ -71,15 +59,11 @@ public class Trabajador extends Person {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trabajador")
 	private Set<PeriodoVacaciones> vacaciones;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trabajador")
+	private Set<Factura> facturas;
 	
-
-	public Set<PeriodoVacaciones> getVacaciones() {
-		return vacaciones;
-	}
-
-	public void setVacaciones(Set<PeriodoVacaciones> vacaciones) {
-		this.vacaciones = vacaciones;
-	}
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trabajador")
+	private Set<Servicio> servicio;
 
 	public String getDni() {
 		return dni;
@@ -136,7 +120,37 @@ public class Trabajador extends Person {
 	public void setPedidos(Set<Pedido> pedidos) {
 		this.pedidos = pedidos;
 	}
-	
+
+	public Set<PeriodoVacaciones> getVacaciones() {
+		return vacaciones;
+	}
+
+	public void setVacaciones(Set<PeriodoVacaciones> vacaciones) {
+		this.vacaciones = vacaciones;
+	}
+
+	public Set<Factura> getFacturas() {
+		return facturas;
+	}
+
+	public void setFacturas(Set<Factura> facturas) {
+		this.facturas = facturas;
+	}
+
+	public Set<Servicio> getServicio() {
+		return servicio;
+	}
+
+	public void setServicio(Set<Servicio> servicio) {
+		this.servicio = servicio;
+	}
+
+	@Override
+	public String toString() {
+		return "Trabajador [dni=" + dni + ", email=" + email + ", direccion=" + direccion + ", telefono=" + telefono
+				+ ", esGerente=" + esGerente + ", nominas=" + nominas + ", pedidos=" + pedidos + ", vacaciones="
+				+ vacaciones + ", facturas=" + facturas + ", servicio=" + servicio + "]";
+	}
 	
 	
 	

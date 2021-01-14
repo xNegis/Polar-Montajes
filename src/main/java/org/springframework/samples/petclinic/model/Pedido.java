@@ -5,10 +5,14 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+@Entity
+@Table(name = "pedido")
 public class Pedido extends BaseEntity {
 
 	@Column(name = "fecha")
@@ -91,5 +95,13 @@ public class Pedido extends BaseEntity {
 	public void setProveedor(Proveedor proveedor) {
 		this.proveedor = proveedor;
 	}
+
+	@Override
+	public String toString() {
+		return "Pedido [fecha=" + fecha + ", precio=" + precio + ", pagado=" + pagado + ", precioTotal=" + precioTotal
+				+ ", trabajador=" + trabajador + ", lineaspedido=" + lineaspedido + ", proveedor=" + proveedor + "]";
+	}
+
+	
 
 }

@@ -18,13 +18,15 @@ package org.springframework.samples.petclinic.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "facturas")
+@Table(name = "factura")
 public class Factura extends BaseEntity {
 
 	@Column(name = "precioTotalSinIva")
@@ -36,6 +38,7 @@ public class Factura extends BaseEntity {
 	@Column(name = "precioTotalConIva")
 	private Double precioTotalConIva;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "pago")
 	private Pago pago;
 
@@ -51,6 +54,14 @@ public class Factura extends BaseEntity {
 	@Column(name = "cliente")
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Cliente cliente;
+
+	@Column(name = "trabajador")
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Trabajador trabajador;
+	
+	@Column(name = "linea_factura")
+	@ManyToOne(cascade = CascadeType.ALL)
+	private LineaFactura lineaFactura;
 
 	public Double getPrecioTotalSinIva() {
 		return precioTotalSinIva;
@@ -108,4 +119,38 @@ public class Factura extends BaseEntity {
 		this.pagado = pagado;
 	}
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Trabajador getTrabajador() {
+		return trabajador;
+	}
+
+	public void setTrabajador(Trabajador trabajador) {
+		this.trabajador = trabajador;
+	}
+
+	public LineaFactura getLineaFactura() {
+		return lineaFactura;
+	}
+
+	public void setLineaFactura(LineaFactura lineaFactura) {
+		this.lineaFactura = lineaFactura;
+	}
+
+	@Override
+	public String toString() {
+		return "Factura [precioTotalSinIva=" + precioTotalSinIva + ", iva=" + iva + ", precioTotalConIva="
+				+ precioTotalConIva + ", pago=" + pago + ", fechaVencimiento=" + fechaVencimiento + ", fechaEmision="
+				+ fechaEmision + ", pagado=" + pagado + ", cliente=" + cliente + ", trabajador=" + trabajador
+				+ ", lineaFactura=" + lineaFactura + "]";
+	}
+
+	
+	
 }
