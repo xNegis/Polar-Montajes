@@ -2,6 +2,7 @@ package org.springframework.samples.petclinic.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -20,9 +21,11 @@ public class LineaPedido extends BaseEntity {
 	private String descripcion;
 	
 	@ManyToOne
+    @JoinColumn(name = "pedido")
 	private Pedido pedido;
 
 	@ManyToOne
+    @JoinColumn(name = "producto")
 	private Producto producto;
 
 	public Integer getCantidad() {
