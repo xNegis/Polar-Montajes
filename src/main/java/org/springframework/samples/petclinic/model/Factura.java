@@ -20,6 +20,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -29,33 +30,38 @@ import java.time.LocalDate;
 @Table(name = "factura")
 public class Factura extends BaseEntity {
 
-	@Column(name = "precioTotalSinIva")
+	@Column(name = "precio_total_sin_iva")
 	private Double precioTotalSinIva;
 
 	@Column(name = "iva")
-	private int iva;
+	private Double iva;
 
-	@Column(name = "precioTotalConIva")
+	@Column(name = "precio_total_con_iva")
 	private Double precioTotalConIva;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "pago")
 	private Pago pago;
 
-	@Column(name = "fechaVencimiento")
+
+	@Column(name = "fecha_vencimiento")
 	private String fechaVencimiento;
 
-	@Column(name = "fechaEmision")
+
+	@Column(name = "fecha_emision")
 	private String fechaEmision;
 
 	@Column(name = "pagado")
 	private Boolean pagado;
 
 	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cliente")
 	private Cliente cliente;
 
 	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "trabajador")
 	private Trabajador trabajador;
+	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private LineaFactura lineaFactura;
@@ -68,11 +74,11 @@ public class Factura extends BaseEntity {
 		this.precioTotalSinIva = precioTotalSinIva;
 	}
 
-	public int getIva() {
+	public Double getIva() {
 		return iva;
 	}
 
-	public void setIva(int iva) {
+	public void setIva(Double iva) {
 		this.iva = iva;
 	}
 

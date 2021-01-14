@@ -18,6 +18,7 @@ package org.springframework.samples.petclinic.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -36,9 +37,11 @@ public class LineaFactura extends BaseEntity {
 	private Double precioUnitario;
 
 	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "servicio")
 	private Servicio servicio;
 
 	@ManyToOne
+    @JoinColumn(name = "factura")
 	private Factura factura;
 
 	public Integer getCantidad() {

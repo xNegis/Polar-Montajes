@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -17,7 +18,7 @@ public class Pedido extends BaseEntity {
 
 	@Column(name = "fecha")
 	@NotEmpty
-	private Date fecha;
+	private String fecha;
 
 	@Column(name = "precio")
 	@NotEmpty
@@ -27,24 +28,22 @@ public class Pedido extends BaseEntity {
 	@NotEmpty
 	private Boolean pagado;
 
-	@Column(name = "precio_total")
-	@NotEmpty
-	private Double precioTotal;
-
 	@ManyToOne
+    @JoinColumn(name = "trabajador")
 	private Trabajador trabajador;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
 	private Set<LineaPedido> lineaspedido;
 
 	@ManyToOne
+    @JoinColumn(name = "proveedor")
 	private Proveedor proveedor;
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
@@ -62,14 +61,6 @@ public class Pedido extends BaseEntity {
 
 	public void setPagado(Boolean pagado) {
 		this.pagado = pagado;
-	}
-
-	public Double getPrecioTotal() {
-		return precioTotal;
-	}
-
-	public void setPrecioTotal(Double precioTotal) {
-		this.precioTotal = precioTotal;
 	}
 
 	public Trabajador getTrabajador() {
@@ -98,7 +89,7 @@ public class Pedido extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Pedido [fecha=" + fecha + ", precio=" + precio + ", pagado=" + pagado + ", precioTotal=" + precioTotal
+		return "Pedido [fecha=" + fecha + ", precio=" + precio + ", pagado=" + pagado 
 				+ ", trabajador=" + trabajador + ", lineaspedido=" + lineaspedido + ", proveedor=" + proveedor + "]";
 	}
 

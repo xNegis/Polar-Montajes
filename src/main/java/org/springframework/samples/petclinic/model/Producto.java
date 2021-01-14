@@ -11,11 +11,8 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "producto")
-public class Producto extends BaseEntity{
+public class Producto extends NamedEntity{
 	
-	@Column(name = "Name")
-	@NotEmpty
-	protected String name;
 
 	@Column(name = "Precio")
 	@NotEmpty
@@ -24,13 +21,7 @@ public class Producto extends BaseEntity{
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
 	private Set<Producto> producto;
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 
 	public Double getPrecio() {
 		return precio;
@@ -50,7 +41,7 @@ public class Producto extends BaseEntity{
 
 	@Override
 	public String toString() {
-		return "Producto [name=" + name + ", precio=" + precio + ", producto=" + producto + "]";
+		return "Producto [precio=" + precio + ", producto=" + producto + "]";
 	}
 
 	

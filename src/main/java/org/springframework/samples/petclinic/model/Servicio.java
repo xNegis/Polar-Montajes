@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -26,20 +27,19 @@ public class Servicio extends BaseEntity {
 	private String fechaFin;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "tipoServcio")
+	@Column(name = "tipo_servicio")
 	@NotNull
 	private TipoServicio tipoServicio;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@NotNull
+	@JoinColumn(name = "cliente")
 	private Cliente cliente;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@NotNull
+    @JoinColumn(name = "trabajador")
 	private Trabajador trabajador;
 	
 	@OneToOne(mappedBy="servicio")
-	@NotNull
 	private LineaFactura lineaFactura;
 	
 	public void finalizarServicio() {
