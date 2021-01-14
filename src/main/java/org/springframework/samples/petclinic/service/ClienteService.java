@@ -26,4 +26,7 @@ public class ClienteService {
 		return clienteRepository.getClienteByDni(dni);
 	}
 
+	public void save(Cliente cliente) {
+		this.clienteRepository.save(cliente);
+	}
 }

@@ -16,20 +16,15 @@ import javax.validation.constraints.NotNull;
 public class Cliente extends Person {
 
 	@Column(name = "dni")
-	@NotEmpty
 	private String dni;
 
 	@Column(name = "telefono")
-	@NotNull
-	@Digits(fraction = 0, integer = 9)
 	private Integer telefono;
 
 	@Column(name = "correo")
-	@NotEmpty
 	private String correo;
 
 	@Column(name = "direccion")
-	@NotEmpty
 	private String direccion;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")

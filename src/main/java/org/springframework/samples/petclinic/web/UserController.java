@@ -20,6 +20,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Cliente;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.User;
 import org.springframework.samples.petclinic.service.AuthoritiesService;
@@ -79,6 +80,9 @@ public class UserController {
 		else {
 			//creating owner, user, and authority
 			this.userService.saveUser(user);
+			Cliente cliente = new Cliente();
+			cliente.setDni(user.getUsername());
+			this.clienteService.save(cliente);
 			
 			authoritiesService.saveAuthorities(user.getUsername(), "cliente");
 			return "redirect:/welcome";

@@ -16,6 +16,8 @@
 package org.springframework.samples.petclinic.service;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +58,13 @@ public class NominasService {
 		return nominaRepository.findById(id);
 	}
 	
+	public List<Nomina> findAll(){
 	
+		return this.nominaRepository.findAll();
+		 
+		}
+
+	public List<Nomina> findNominasByTrabajador(String dni) {
+		return nominaRepository.findNominaByTrabajador(dni);
+	}
 }

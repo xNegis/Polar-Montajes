@@ -20,8 +20,15 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.samples.petclinic.model.Pedido;
-import org.springframework.samples.petclinic.repository.PedidoRepository;
+import org.springframework.samples.petclinic.model.Factura;
+import org.springframework.samples.petclinic.model.LineaPedido;
+import org.springframework.samples.petclinic.model.Trabajador;
+import org.springframework.samples.petclinic.model.User;
+import org.springframework.samples.petclinic.repository.FacturaRepository;
+import org.springframework.samples.petclinic.repository.LineaPedidoRepository;
+import org.springframework.samples.petclinic.repository.LineaPedidoRepository;
+import org.springframework.samples.petclinic.repository.TrabajadoresRepository;
+import org.springframework.samples.petclinic.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,22 +39,22 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Michael Isvy
  */
 @Service
-public class ServicioPedido {
+public class LineaPedidoService {
 
-	private PedidoRepository pedidoRepository;
+	private LineaPedidoRepository lineaPedidoRepository;
 
 	@Autowired
-	public ServicioPedido(PedidoRepository pedidoRepository) {
-		this.pedidoRepository = pedidoRepository;
+	public LineaPedidoService(LineaPedidoRepository lineaPedidoRepository) {
+		this.lineaPedidoRepository = lineaPedidoRepository;
 	}
 
 	@Transactional
-	public void savePedido(Pedido pedido) throws DataAccessException {
-		pedidoRepository.save(pedido);	
+	public void saveLineaPedido(LineaPedido lineaPedido) throws DataAccessException {
+		lineaPedidoRepository.save(lineaPedido);	
 	}
 	
-	public Optional<Pedido> findPedido(Integer id) {
-		return pedidoRepository.findById(id);
+	public Optional<LineaPedido> findLineaPedido(Integer id) {
+		return lineaPedidoRepository.findById(id);
 	}
 	
 	
