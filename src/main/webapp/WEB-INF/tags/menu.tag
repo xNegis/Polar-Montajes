@@ -110,6 +110,14 @@
 				</sec:authorize>
 				
 				<sec:authorize access="hasAuthority('gerente')">
+				<petclinic:menuItem active="${name eq 'vacas1'}" url="/trabajador/periodoVacaciones/Todos"
+					title="vacacionesAll">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Vacaciones</span>
+				</petclinic:menuItem>
+				</sec:authorize>
+				
+				<sec:authorize access="hasAuthority('gerente')">
 				<petclinic:menuItem active="${name eq 'listatrabajadores'}" url="/trabajadores"
 					title="trabajadores">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>

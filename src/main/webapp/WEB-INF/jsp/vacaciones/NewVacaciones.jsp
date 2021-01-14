@@ -13,7 +13,7 @@
 		
 		  
 		
-		 	<form:form modelAttribute="team" class="form-horizontal" id="add-pilot-form" actions='/trabajador/{trabajadorId}/periodoVacaciones/new' > 
+		 	<form:form modelAttribute="team" class="form-horizontal" id="add-pilot-form" actions="/leagues/{leagueId}/teams/new" > 
         <div class="form-group has-feedback">
         	<input type="hidden" name="trabajador" value="${trabajadorId}"/>
             <petclinic:inputField label="fechaInicio" name="fechaInicio" />

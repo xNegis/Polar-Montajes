@@ -102,11 +102,11 @@ public class Servicio extends BaseEntity {
 		this.lineaFactura = lineaFactura;
 	}
 
-	@Override
-	public String toString() {
-		return "Servicio [tiempoEmpleado=" + tiempoEmpleado + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin
-				+ ", tipoServicio=" + tipoServicio + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Servicio [tiempoEmpleado=" + tiempoEmpleado + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin
+//				+ ", tipoServicio=" + tipoServicio + "]";
+//	}
 
 
 

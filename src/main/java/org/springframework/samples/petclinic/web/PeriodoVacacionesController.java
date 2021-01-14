@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import lombok.extern.slf4j.Slf4j;
 
 
 @Controller
@@ -61,6 +60,7 @@ public class PeriodoVacacionesController {
 		return "/vacaciones/Vacaciones";
 	}
 	
+	
 	@GetMapping(path = "/trabajador/{trabajadorId}/periodoVacaciones/new")
 	public String crearEquipo1(@PathVariable("trabajadorId") int trabajadorId, ModelMap model) {
 		PeriodoVacaciones periodoVacacionesNew = new PeriodoVacaciones();
@@ -75,18 +75,52 @@ public class PeriodoVacacionesController {
 	}
 	
 	@PostMapping(value = "/trabajador/{trabajadorId}/periodoVacaciones/new")
-	public String saveNewVacaciones(@PathVariable("trabajadorId") int trabajadorId,  PeriodoVacaciones periodo, BindingResult result,
+	public String saveNewVacaciones(@PathVariable("trabajadorId") int trabajadorId,  PeriodoVacaciones team, BindingResult result,
 			ModelMap model) {
 
 		Trabajador trabajador = this.trabajadorService.findTrabajadorById(trabajadorId);
 		System.out.println(trabajador);
-		periodo.setEstado(Estado.PENDIENTE);
-		periodo.setTrabajador(trabajador);
-		
-			this.saveNewVacaciones(trabajadorId, periodo, result, model);
-			return "redirect:/Trabajador/PeriodoVacaciones";
+		team.setEstado(Estado.PENDIENTE);
+		team.setTrabajador(trabajador);
+		System.out.println("hhhhhhhh	");
+		System.out.println(team);
+			this.periodoVacacionesService.savePeriodo(team);
+			
+			return "redirect:/trabajador/{trabajadorId}/periodoVacaciones";
 
 			}
+	
+	@GetMapping(path = "/trabajador/periodoVacaciones/Todos")
+	public String crearEquipo2( ModelMap model) {
+		
+		List<PeriodoVacaciones> periodoVacaciones = this.periodoVacacionesService.findAll();
+		
+		model.put("periodovacaciones", periodoVacaciones);
+		
+		return "/vacaciones/TodosLosPeriodos";
+	}
+	
+	@GetMapping(path = "/trabajador/periodoVacaciones/{periodoId}/aceptado")
+	public String updateVacas(@PathVariable("periodoId") int periodoId, ModelMap model) {
+		
+		
+		
+		this.periodoVacacionesService.UpdateAceptadaVacaciones(periodoId);
+		
+		return "redirect:/trabajador/periodoVacaciones/Todos";
+		
+	}
+	
+	@GetMapping(path = "/trabajador/periodoVacaciones/{periodoId}/denegado")
+	public String updateVacasa(@PathVariable("periodoId") int periodoId, ModelMap model) {
+		
+		
+		
+		this.periodoVacacionesService.UpdateDenegadoVacaciones(periodoId);
+		
+		return "redirect:/trabajador/periodoVacaciones/Todos";
+		
+	}
 	
 }
 	

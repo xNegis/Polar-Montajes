@@ -37,7 +37,6 @@ public class PeriodoVacaciones extends BaseEntity {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "Vacaciones")
-	@NotEmpty
 	protected Vacaciones vacaciones;
 	
 	@ManyToOne
@@ -76,11 +75,11 @@ public class PeriodoVacaciones extends BaseEntity {
 		this.trabajador = trabajador;
 	}
 
-	@Override
-	public String toString() {
-		return "PeriodoVacaciones [fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", estado=" + estado + ", vacaciones=" + vacaciones
-				+ ", trabajador=" + trabajador + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "PeriodoVacaciones [fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin 
+//				+ "]";
+//	}
 
 	
 

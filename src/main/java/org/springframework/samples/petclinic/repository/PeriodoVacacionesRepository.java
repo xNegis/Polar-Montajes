@@ -19,10 +19,14 @@ import java.util.Collection;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.model.PeriodoVacaciones;
 import org.springframework.samples.petclinic.model.Vet;
 
@@ -43,6 +47,16 @@ public interface PeriodoVacacionesRepository extends CrudRepository<PeriodoVacac
 			
 	@Query(value="SELECT * FROM PERIODO_VACACIONES WHERE PERIODO_VACACIONES.TRABAJADOR = ?1", nativeQuery = true)
 	public List<PeriodoVacaciones> findVacacionesByTrabajador(Integer id);
+	
+	@Transactional
+	@Modifying
+	@Query("UPDATE PeriodoVacaciones p SET p.estado= 'ACEPTADA' WHERE p.id = :id")	
+	public void actualizarAceptadaVacaciones(@Param("id") int id);
+	
+	@Transactional
+	@Modifying
+	@Query("UPDATE PeriodoVacaciones p SET p.estado= 'DENEGADA' WHERE p.id = :id")	
+	public void actualizardenegadoVacaciones(@Param("id") int id);
 			
 	List<PeriodoVacaciones> findAll() throws DataAccessException;
 
