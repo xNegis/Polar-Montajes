@@ -77,6 +77,22 @@
 					<span>Mis nóminas</span>
 				</petclinic:menuItem>
 					</sec:authorize>
+					
+					<sec:authorize access="hasAuthority('trabajador')">
+					<petclinic:menuItem active="${name eq 'servicios'}" url="/todosservicios"
+					title="servicios">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Servicios</span>
+				</petclinic:menuItem>
+					</sec:authorize>
+					
+					<sec:authorize access="hasAuthority('gerente')">
+					<petclinic:menuItem active="${name eq 'servicios'}" url="/todosservicios"
+					title="servicios">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Servicios</span>
+				</petclinic:menuItem>
+					</sec:authorize>
 				
 				<sec:authorize access="hasAuthority('cliente')">
 

@@ -7,23 +7,21 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 
-<petclinic:layout pageName="nuevanomina">
+<petclinic:layout pageName="nuevoservicio">
 
-     <form:form modelAttribute="nomina" class="form-horizontal" id="add-pilot-form" actions="/nuevanomina"  > 
+     <form:form modelAttribute="servicio" class="form-horizontal" id="add-pilot-form" actions="/nuevoservicio"  > 
         <div class="form-group has-feedback">
 
-            <petclinic:inputField label="Dni trabajador" name="trabajador.dni"/>
-            <petclinic:inputField label="Horas Trabajadas" name="horasTrabajadas"/>
-            <petclinic:inputField label="Horas Extras" name="horasExtra"/>
-            <petclinic:inputField label="Precio Hora" name="precioHora"/>
-            <petclinic:inputField label="Precio Hora Extra" name="precioHoraExtra"/>
-            <petclinic:inputField label="Retenciones" name="retenciones"/>
+				<div class="control-group">
+                    <petclinic:selectField name="tipoServicio" label="Tipo de servicio " names="${tipos}" size="3"/>
+                </div>            
+                <petclinic:inputField label="DNI cliente" name="cliente.dni"/>
            
            
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">         
-                        <button class="btn btn-default" type="submit">Crear nómina</button>
+                        <button class="btn btn-default" type="submit">Dar de alta servicio</button>
             </div>
         </div>
      </form:form> 
