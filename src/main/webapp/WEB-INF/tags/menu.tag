@@ -47,6 +47,7 @@
 					</sec:authorize>
 				
 				
+				<sec:authorize access="hasAuthority('cliente')">
 
 				<petclinic:menuItem active="${name eq 'servicios'}" url="/misservicios"
 					title="mis servicios">
@@ -59,12 +60,23 @@
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Mis facturas</span>
 				</petclinic:menuItem>
+				</sec:authorize>
 
-				<petclinic:menuItem active="${name eq 'error'}" url="/oups"
-					title="trigger a RuntimeException to see how it is handled">
-					<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-					<span>Error</span>
+				<sec:authorize access="isAnonymous()">
+				<petclinic:menuItem active="${name eq 'home'}" url="/contacto"
+					title="Contact page">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Contacto</span>
 				</petclinic:menuItem>
+				</sec:authorize>
+				
+					<sec:authorize access="hasAuthority('cliente')">
+				<petclinic:menuItem active="${name eq 'home'}" url="/contacto"
+					title="Contact page">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Contacto</span>
+				</petclinic:menuItem>
+				</sec:authorize>
 
 			</ul>
 

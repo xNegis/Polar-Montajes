@@ -88,14 +88,14 @@ public class UserController {
 	  
 	  @GetMapping({"/welcomeCliente"})
 	  public String welcomeCliente(ModelMap modelMap) {	    
-			modelMap.addAttribute("usuario", clienteService.getClienteByDni(userService.getUserSession().getDni()));
+			modelMap.addAttribute("usuario", clienteService.getClienteByDni(userService.getUserSession().getUsername()));
 
 	    return "clientes/welcomecliente";
 	  }
 	  
 	  @GetMapping({"/welcomeTrabajador"})
 	  public String welcomeTrabajador(ModelMap modelMap) {	    
-			modelMap.addAttribute("usuario", trabajadorService.getTrabajadorByDni(userService.getUserSession().getDni()));
+			modelMap.addAttribute("usuario", trabajadorService.getTrabajadorByDni(userService.getUserSession().getUsername()));
 
 	    return "Trabajador/welcometrabajador";
 	  }

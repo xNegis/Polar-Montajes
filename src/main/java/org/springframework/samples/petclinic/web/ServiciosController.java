@@ -30,7 +30,7 @@ public class ServiciosController {
 
 	@GetMapping("/misservicios")
 	public String listadoServiciosCliente(ModelMap modelMap) {
-		modelMap.addAttribute("servicios", servicioService.getServicioClienteByDni(userService.getUserSession().getDni()));
+		modelMap.addAttribute("servicios", servicioService.getServicioClienteByDni(userService.getUserSession().getUsername()));
 		return "clientes/misservicios";
 	}
 

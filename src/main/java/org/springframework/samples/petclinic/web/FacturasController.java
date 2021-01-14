@@ -25,7 +25,7 @@ public class FacturasController {
 
 	public String listadoFacturasCliente(ModelMap modelMap) {
 System.out.println(userService.getUserSession().getDni());
-		modelMap.addAttribute("facturas", facturaService.getFacturaClienteByDni(userService.getUserSession().getDni()));
+		modelMap.addAttribute("facturas", facturaService.getFacturaClienteByDni(userService.getUserSession().getUsername()));
 		return "clientes/misfacturas";
 	}
 
