@@ -11,17 +11,14 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "producto")
-public class Producto extends NamedEntity{
-	
+public class Producto extends NamedEntity {
 
 	@Column(name = "Precio")
 	@NotEmpty
 	protected Double precio;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
 	private Set<Producto> producto;
-
-	
 
 	public Double getPrecio() {
 		return precio;
@@ -44,5 +41,4 @@ public class Producto extends NamedEntity{
 		return "Producto [precio=" + precio + ", producto=" + producto + "]";
 	}
 
-	
 }
