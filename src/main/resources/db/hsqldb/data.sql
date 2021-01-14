@@ -26,6 +26,22 @@ INSERT INTO authorities(id,username,authority) VALUES (8,'alvcorcas','admin');
 -- Usuario de martorsan13 como owner
 INSERT INTO users(username,password,enabled) VALUES ('martorsan13','mariano',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (9,'martorsan13','admin');
+
+
+-- Usuario de martorsan13 como owner
+INSERT INTO users(username,password,enabled) VALUES ('gerente','gerente',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (10,'gerente','gerente');
+-- Usuario de martorsan13 como owner
+INSERT INTO users(username,password,enabled) VALUES ('cliente','cliente',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (11,'cliente','cliente');
+-- Usuario de martorsan13 como owner
+INSERT INTO users(username,password,enabled) VALUES ('trabajador','trabajador',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (11,'trabajador','trabajador');
+
+
+
+
+
 INSERT INTO vets VALUES (1, 'James', 'Carter');
 INSERT INTO vets VALUES (2, 'Helen', 'Leary');
 INSERT INTO vets VALUES (3, 'Linda', 'Douglas');
@@ -79,4 +95,5 @@ INSERT INTO visits(id,pet_id,visit_date,description) VALUES (1, 7, '2013-01-01',
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (2, 8, '2013-01-02', 'rabies shot');
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (4, 7, '2013-01-04', 'spayed');
+
 
