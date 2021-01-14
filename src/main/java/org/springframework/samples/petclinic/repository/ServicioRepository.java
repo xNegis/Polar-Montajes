@@ -36,7 +36,7 @@ import org.springframework.samples.petclinic.model.Vet;
  * @author Sam Brannen
  * @author Michael Isvy
  */
-public interface SevicioRepository extends CrudRepository<Servicio, Integer>{
+public interface ServicioRepository extends CrudRepository<Servicio, Integer>{
 
 	/**
 	 * Retrieve all <code>Vet</code>s from the data store.
