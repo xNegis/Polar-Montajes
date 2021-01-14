@@ -1,5 +1,7 @@
-package org.springframework.samples.petclinic.service;
+ package org.springframework.samples.petclinic.service;
 
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.PeriodoVacaciones;
@@ -27,8 +29,8 @@ public class PeriodoVacacionesService {
 		periodoVacacionesRepository.save(p);
 		}
 	
-//	public FindPeriodoVacacionesByTrabajador (Integer id) {
-//		
-//	}
+	public List<PeriodoVacaciones> FindPeriodoVacacionesByTrabajador (Integer id) {
+		return periodoVacacionesRepository.findVacacionesByTrabajador(id);
+	}
 	
 }

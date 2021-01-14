@@ -16,13 +16,25 @@ import javax.validation.constraints.NotEmpty;
 public class PeriodoVacaciones extends BaseEntity {
 	
 	@Column(name = "FechaInicio")
-	@NotEmpty
 	protected String fechaInicio;
 	
 	@Column(name = "FechaFin")
-	@NotEmpty
+	
 	protected String fechaFin;
 	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "Estado")
+	
+	protected Estado estado;
+	
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "Vacaciones")
 	@NotEmpty
@@ -53,7 +65,7 @@ public class PeriodoVacaciones extends BaseEntity {
 	}
 
 	public void setVacaciones(Vacaciones vacaciones) {
-		vacaciones = vacaciones;
+		this.vacaciones = vacaciones;
 	}
 
 	public Trabajador getTrabajador() {
@@ -66,7 +78,7 @@ public class PeriodoVacaciones extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "PeriodoVacaciones [fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", Vacaciones=" + vacaciones
+		return "PeriodoVacaciones [fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", estado=" + estado + ", vacaciones=" + vacaciones
 				+ ", trabajador=" + trabajador + "]";
 	}
 
