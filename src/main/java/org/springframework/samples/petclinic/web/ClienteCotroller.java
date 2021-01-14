@@ -25,14 +25,14 @@ public class ClienteCotroller {
 	@GetMapping("/clientes")
 	public ModelAndView mostrarClientes() {
 		ModelAndView mav = new ModelAndView();
-		boolean esAdmin = this.userService.getUserSession().getAuthorities().stream()
-				.anyMatch(x -> x.getAuthority().equals("admin"));
-		if (esAdmin) {
-			mav.setViewName("clientes.jsp");
-			mav.addObject("clientes", clienteService.getAllClientes());
-		} else {
-			mav.setViewName("welcome.jsp");
-		}
+//		boolean esAdmin = this.userService.getUserSession().getAuthorities().stream()
+//				.anyMatch(x -> x.getAuthority().equals("admin"));
+//		if (esAdmin) {
+		mav.setViewName("clientes.jsp");
+		mav.addObject("clientes", clienteService.getAllClientes());
+//		} else {
+//			mav.setViewName("welcome.jsp");
+//		}
 		return mav;
 	}
 
