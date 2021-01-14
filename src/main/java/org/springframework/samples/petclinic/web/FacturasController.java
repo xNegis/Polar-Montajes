@@ -44,4 +44,17 @@ System.out.println(userService.getUserSession().getDni());
 
 	}
 
+	@GetMapping("/crearFactura")
+	public ModelAndView crearFactura() {
+		ModelAndView mav = new ModelAndView();
+		boolean esTrabajador = this.userService.getUserSession().getAuthorities().stream()
+				.anyMatch(x -> x.getAuthority().equals("gerente"));
+		if (esTrabajador) {
+			mav.setViewName("facturas/crearFactura");
+		} else {
+			mav.setViewName("welcome");
+		}
+		return mav;
+	}
+
 }

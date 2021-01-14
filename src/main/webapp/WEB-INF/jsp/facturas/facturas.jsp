@@ -2,6 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags"%>
 
 
@@ -29,10 +30,12 @@
 					<td><c:out value="${factura.iva}" /></td>
 					<td><c:out value="${factura.precioTotalConIva}" /></td>
 					<td><c:out value="${factura.pagado}" /></td>
-					
+
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<spring:url value=""></spring:url>
+	<spring:url value="/crearFactura" var="crearFacturasUrl">
+	</spring:url>
+	<a href="${fn:escapeXml(crearFacturasUrl)}">Crear factura</a>
 </petclinic:layout>
