@@ -43,8 +43,10 @@ public class Factura extends BaseEntity {
 	@Column(name = "pago")
 	private Pago pago;
 
+
 	@Column(name = "fecha_vencimiento")
 	private String fechaVencimiento;
+
 
 	@Column(name = "fecha_emision")
 	private String fechaEmision;

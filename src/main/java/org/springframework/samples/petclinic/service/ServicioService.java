@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.samples.petclinic.model.Factura;
 import org.springframework.samples.petclinic.model.Servicio;
 import org.springframework.samples.petclinic.repository.ServicioRepository;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,10 @@ public class ServicioService {
 	@Transactional
 	public void registrarServicio(Servicio servicio) throws DataAccessException {
 		servicioRepository.save(servicio);	
+	}
+	public List<Servicio> getServicioClienteByDni(String dni) {
+		return servicioRepository.findServiciosByDniCliente(dni);
+
 	}
 	
 //	public Optional<Servicio> findFactura(Integer id) {

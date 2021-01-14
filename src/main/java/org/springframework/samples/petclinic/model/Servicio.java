@@ -21,10 +21,10 @@ public class Servicio extends BaseEntity {
 
 	@Column(name = "fecha_inicio")
 	@NotNull
-	private LocalDate fechaInicio;
+	private String fechaInicio;
 
 	@Column(name = "fecha_fin")
-	private LocalDate fechaFin;
+	private String fechaFin;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "tipo_servicio")
@@ -43,7 +43,7 @@ public class Servicio extends BaseEntity {
 	private LineaFactura lineaFactura;
 	
 	public void finalizarServicio() {
-		this.setFechaFin(LocalDate.now());
+		this.setFechaFin(LocalDate.now().toString());
 	}
 	
 	public Double getTiempoEmpleado() {
@@ -54,19 +54,19 @@ public class Servicio extends BaseEntity {
 		this.tiempoEmpleado = tiempoEmpleado;
 	}
 
-	public LocalDate getFechaInicio() {
+	public String getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(LocalDate fechaInicio) {
+	public void setFechaInicio(String fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public LocalDate getFechaFin() {
+	public String getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(LocalDate fechaFin) {
+	public void setFechaFin(String fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 

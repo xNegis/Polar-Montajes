@@ -20,6 +20,7 @@ public class User{
 	String username;
 	
 	String password;
+	String dni;
 	
 	boolean enabled;
 	
