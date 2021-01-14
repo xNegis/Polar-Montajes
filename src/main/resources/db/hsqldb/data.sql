@@ -1,13 +1,31 @@
--- One admin user, named admin1 with passwor 4dm1n and authority admin
+-- One admin user, named admin1 with password 4dm1n and authority admin
 INSERT INTO users(username,password,enabled) VALUES ('admin1','4dm1n',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (1,'admin1','admin');
--- One owner user, named owner1 with passwor 0wn3r
+-- One owner user, named owner1 with password 0wn3r
 INSERT INTO users(username,password,enabled) VALUES ('owner1','0wn3r',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (2,'owner1','owner');
--- One vet user, named vet1 with passwor v3t
+-- One vet user, named vet1 with password v3t
 INSERT INTO users(username,password,enabled) VALUES ('vet1','v3t',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (3,'vet1','veterinarian');
 
+-- Usuario de antcammar4 como owner
+INSERT INTO users(username,password,enabled) VALUES ('antcammar4','123456',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (4,'antcammar4','admin');
+-- Usuario de serrojjim como owner
+INSERT INTO users(username,password,enabled) VALUES ('serrojjim','123456',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (5,'serrojjim','admin');
+-- Usuario de aleruijur como owner
+INSERT INTO users(username,password,enabled) VALUES ('aleruijur','aleale',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (6,'aleruijur','admin');
+-- Usuario de migniearj como owner
+INSERT INTO users(username,password,enabled) VALUES ('migniearj','miguesnow',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (7,'migniearj','admin');
+-- Usuario de alvcorcas como owner
+INSERT INTO users(username,password,enabled) VALUES ('alvcorcas','1eB@6!XYUYe6c33&',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (8,'alvcorcas','admin');
+-- Usuario de martorsan13 como owner
+INSERT INTO users(username,password,enabled) VALUES ('martorsan13','mariano',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (9,'martorsan13','admin');
 INSERT INTO vets VALUES (1, 'James', 'Carter');
 INSERT INTO vets VALUES (2, 'Helen', 'Leary');
 INSERT INTO vets VALUES (3, 'Linda', 'Douglas');
