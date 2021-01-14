@@ -67,6 +67,19 @@ public class Trabajador extends Person {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trabajador")
 	private Set<Pedido> pedidos;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trabajador")
+	private Set<PeriodoVacaciones> vacaciones;
+	
+	
+
+	public Set<PeriodoVacaciones> getVacaciones() {
+		return vacaciones;
+	}
+
+	public void setVacaciones(Set<PeriodoVacaciones> vacaciones) {
+		this.vacaciones = vacaciones;
+	}
 
 	public String getDni() {
 		return dni;
