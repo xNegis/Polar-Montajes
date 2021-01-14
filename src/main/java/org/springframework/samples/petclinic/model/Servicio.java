@@ -105,9 +105,12 @@ public class Servicio extends BaseEntity {
 	@Override
 	public String toString() {
 		return "Servicio [tiempoEmpleado=" + tiempoEmpleado + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin
-				+ ", tipoServicio=" + tipoServicio + ", cliente=" + cliente + ", trabajador=" + trabajador
-				+ ", lineaFactura=" + lineaFactura + "]";
+				+ ", tipoServicio=" + tipoServicio + "]";
 	}
+
+
+
+	
 	
 	
 }

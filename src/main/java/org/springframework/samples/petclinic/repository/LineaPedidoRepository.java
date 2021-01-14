@@ -9,4 +9,5 @@ import org.springframework.samples.petclinic.model.LineaPedido;
 
 public interface LineaPedidoRepository extends CrudRepository<LineaPedido, Integer> {
 	List<LineaPedido> findAll() throws DataAccessException;
+	
 }

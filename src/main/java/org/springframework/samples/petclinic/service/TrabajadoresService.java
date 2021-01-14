@@ -38,11 +38,18 @@ public class TrabajadoresService {
 	public Optional<Trabajador> findTrabajador(Integer id) {
 		return trabajadoresRepository.findById(id);
 	}
+
+	public Trabajador getTrabajadorByDni(String dni) {
+		return trabajadoresRepository.getTrabajadorByDni(dni);
+	}
 	
+
 	public Trabajador findTrabajadorById(Integer id) {
 		return this.trabajadoresRepository.findTrabajadorByID(id);
 	}
 	
+
+
 	public List<Trabajador> findAll(){
 		List<Trabajador> trabajador= new ArrayList<Trabajador>();
 		this.trabajadoresRepository.findAll().forEach(trabajador::add);

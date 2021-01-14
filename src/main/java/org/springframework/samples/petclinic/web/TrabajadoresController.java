@@ -15,17 +15,24 @@
  */
 package org.springframework.samples.petclinic.web;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Nomina;
 import org.springframework.samples.petclinic.model.Owner;
+import org.springframework.samples.petclinic.model.Trabajador;
 import org.springframework.samples.petclinic.service.AuthoritiesService;
+import org.springframework.samples.petclinic.service.NominasService;
 import org.springframework.samples.petclinic.service.OwnerService;
+import org.springframework.samples.petclinic.service.TrabajadoresService;
 import org.springframework.samples.petclinic.service.VetService;
 import org.springframework.samples.petclinic.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -41,32 +48,74 @@ public class TrabajadoresController {
 
 	private static final String VIEWS_OWNER_CREATE_FORM = "users/createOwnerForm";
 
-	private final OwnerService ownerService;
+	private final TrabajadoresService trabajadoresService;
+	private final NominasService nominaService;
+	private final UserService userService;
+
 
 	@Autowired
-	public TrabajadoresController(OwnerService clinicService) {
-		this.ownerService = clinicService;
+	public TrabajadoresController(TrabajadoresService trabajadoresService,NominasService nominaService,UserService userService) {
+		this.trabajadoresService = trabajadoresService;
+		this.nominaService = nominaService;
+		this.userService = userService;
 	}
 
-//
-//
-//	@GetMapping(value = "/users/new")
-//	public String initCreationForm(Map<String, Object> model) {
-//		Owner owner = new Owner();
-//		model.put("owner", owner);
-//		return VIEWS_OWNER_CREATE_FORM;
-//	}
-//
-//	@PostMapping(value = "/users/new")
-//	public String processCreationForm(@Valid Owner owner, BindingResult result) {
-//		if (result.hasErrors()) {
-//			return VIEWS_OWNER_CREATE_FORM;
-//		}
-//		else {
-//			//creating owner, user, and authority
-//			this.ownerService.saveOwner(owner);
-//			return "redirect:/";
-//		}
-//	}
+
+	@GetMapping(value = "/trabajadores")
+	public String initCreationForm(Map<String, Object> model) {
+		List<Trabajador> listaTrabajadores = trabajadoresService.findAll();
+		System.out.println(listaTrabajadores);
+		model.put("trabajadores", listaTrabajadores);
+		return "trabajadores/listaTrabajadores";
+		
+	}
+	
+	@GetMapping(value = "/trabajadores/nuevoTrabajador")
+	public String nuevoTrabajador(Map<String, Object> model) {
+		
+		model.put("trabajador", new Trabajador());
+		return "trabajadores/nuevoTrabajador";
+	}
+
+	
+	@PostMapping(value = "/trabajadores/nuevoTrabajador")
+	public String nuevoTrabajador2(Trabajador trabajador,Map<String, Object> model) {
+		this.trabajadoresService.saveTrabajador(trabajador);
+		return "redirect:/trabajadores";
+	}
+	
+	@GetMapping(value = "/misnominas")
+	public String getnominastrabajador(Map<String, Object> model) {
+		List<Nomina> listaNominas = nominaService.findNominasByTrabajador(userService.getUserSession().getUsername());
+
+		model.put("misnominas", listaNominas);
+		return "trabajadores/misnominas";
+	}
+	
+	@GetMapping(value = "/nominas")
+	public String getnominas(ModelMap modelMap) {
+		List<Nomina> listaNominas = nominaService.findAll();
+		modelMap.addAttribute("nominas", listaNominas);
+		return "trabajadores/nominas";
+	}
+
+	@GetMapping(value = "/nuevanomina")
+	public String nuevaNomina(ModelMap modelMap) {
+		Nomina newnomina = new Nomina();
+		modelMap.put("nomina", newnomina);
+		return "trabajadores/nuevanomina";
+	}
+	
+	@PostMapping(value = "/nuevanomina")
+	public String nuevaNomina2(Nomina nomina) {
+		System.out.println(nomina.getTrabajador().getDni());
+		nomina.setTrabajador(trabajadoresService.getTrabajadorByDni(nomina.getTrabajador().getDni()));
+		nomina.setSueldoBruto((nomina.getHorasTrabajadas()*nomina.getPrecioHora())+(nomina.getHorasExtra()*nomina.getPrecioHoraExtra()));
+		nomina.setSueldoNeto((int)(nomina.getSueldoBruto()-(nomina.getSueldoBruto()*nomina.getRetenciones())));
+		nomina.setMesAño(Integer.toString(LocalDate.now().getMonthValue())+"-"+Integer.toString(LocalDate.now().getYear()));
+		this.nominaService.saveNomina(nomina);
+		return "redirect:/nominas";
+	}
+	
 
 }

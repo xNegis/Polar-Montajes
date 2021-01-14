@@ -58,5 +58,8 @@ public class ProveedorService {
 		return proveedorRepository.findById(id);
 	}
 	
+	public Proveedor findById(Integer id) {
+		return proveedorRepository.findById(id).get();
+	}
 	
 }
