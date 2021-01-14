@@ -36,42 +36,34 @@ import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 import org.springframework.core.style.ToStringCreator;
 
-/**
- * Simple JavaBean domain object representing an owner.
- *
- * @author Ken Krebs
- * @author Juergen Hoeller
- * @author Sam Brannen
- * @author Michael Isvy
- */
-@Entity 
+@Entity
 @Table(name = "nomina")
 public class Nomina extends BaseEntity {
 
-	@Column(name="sueldo_neto")
+	@Column(name = "sueldo_neto")
 	private Integer sueldoNeto;
-	
-	@Column(name="sueldo_bruto")
+
+	@Column(name = "sueldo_bruto")
 	private Integer sueldoBruto;
-	
-	@Column(name="retenciones")
+
+	@Column(name = "retenciones")
 	private Double retenciones;
-	
-	@Column(name="horas_trabajadas")
+
+	@Column(name = "horas_trabajadas")
 	private Integer horasTrabajadas;
-	
-	@Column(name="horas_extra")
+
+	@Column(name = "horas_extra")
 	private Integer horasExtra;
-	
-	@Column(name="precio_hora")
-	private Integer precioHora; 
-	
-	@Column(name="precio_hora_extra")
+
+	@Column(name = "precio_hora")
+	private Integer precioHora;
+
+	@Column(name = "precio_hora_extra")
 	private Integer precioHoraExtra;
-	
+
 	@Column(name = "mes_año")
 	private String mesAño;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "trabajador")
 	private Trabajador trabajador;
