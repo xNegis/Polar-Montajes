@@ -26,6 +26,10 @@ public class Servicio extends BaseEntity {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@NotNull
 	private Cliente cliente;
+	
+	public void finalizarServicio() {
+		this.setFechaFin(LocalDate.now());
+	}
 
 	public Double getTiempoEmpleado() {
 		return tiempoEmpleado;

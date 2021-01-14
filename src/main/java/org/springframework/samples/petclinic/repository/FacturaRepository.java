@@ -19,10 +19,14 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.samples.petclinic.model.Factura;
+import org.springframework.samples.petclinic.model.LineaFactura;
 import org.springframework.samples.petclinic.model.PeriodoVacaciones;
-import org.springframework.samples.petclinic.model.Servicio;
+import org.springframework.samples.petclinic.model.User;
 import org.springframework.samples.petclinic.model.Vet;
 
 /**
@@ -36,12 +40,13 @@ import org.springframework.samples.petclinic.model.Vet;
  * @author Sam Brannen
  * @author Michael Isvy
  */
-public interface SevicioRepository extends CrudRepository<Servicio, Integer>{
+public interface FacturaRepository extends CrudRepository<Factura, Integer>{
 
 	/**
 	 * Retrieve all <code>Vet</code>s from the data store.
 	 * @return a <code>Collection</code> of <code>Vet</code>s
 	 */
-	List<Servicio> findAll() throws DataAccessException;
+	List<Factura> findAll() throws DataAccessException;
 
+	
 }
