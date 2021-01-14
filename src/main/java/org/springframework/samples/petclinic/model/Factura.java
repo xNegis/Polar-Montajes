@@ -60,6 +60,7 @@ public class Factura extends BaseEntity {
     @JoinColumn(name = "trabajador")
 	private Trabajador trabajador;
 	
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private LineaFactura lineaFactura;
 
