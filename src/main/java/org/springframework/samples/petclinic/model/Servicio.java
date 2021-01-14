@@ -4,9 +4,15 @@ import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
+@Entity
+@Table(name = "servicio")
 public class Servicio extends BaseEntity {
 
 	@Column(name = "tiempo_empleado")
@@ -19,6 +25,7 @@ public class Servicio extends BaseEntity {
 	@Column(name = "fecha_fin")
 	private LocalDate fechaFin;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "tipoServcio")
 	@NotNull
 	private TipoServicio tipoServicio;
@@ -26,11 +33,19 @@ public class Servicio extends BaseEntity {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@NotNull
 	private Cliente cliente;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@NotNull
+	private Trabajador trabajador;
+	
+	@OneToOne(mappedBy="servicio")
+	@NotNull
+	private LineaFactura lineaFactura;
 	
 	public void finalizarServicio() {
 		this.setFechaFin(LocalDate.now());
 	}
-
+	
 	public Double getTiempoEmpleado() {
 		return tiempoEmpleado;
 	}
@@ -71,4 +86,28 @@ public class Servicio extends BaseEntity {
 		this.cliente = cliente;
 	}
 
+	public Trabajador getTrabajador() {
+		return trabajador;
+	}
+
+	public void setTrabajador(Trabajador trabajador) {
+		this.trabajador = trabajador;
+	}
+
+	public LineaFactura getLineaFactura() {
+		return lineaFactura;
+	}
+
+	public void setLineaFactura(LineaFactura lineaFactura) {
+		this.lineaFactura = lineaFactura;
+	}
+
+	@Override
+	public String toString() {
+		return "Servicio [tiempoEmpleado=" + tiempoEmpleado + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin
+				+ ", tipoServicio=" + tipoServicio + ", cliente=" + cliente + ", trabajador=" + trabajador
+				+ ", lineaFactura=" + lineaFactura + "]";
+	}
+	
+	
 }

@@ -35,11 +35,9 @@ public class LineaFactura extends BaseEntity {
 	@Column(name = "precio_unitario")
 	private Double precioUnitario;
 
-	@Column(name = "servicio")
 	@OneToOne(cascade = CascadeType.ALL)
 	private Servicio servicio;
 
-	@Column(name = "factura")
 	@ManyToOne
 	private Factura factura;
 
@@ -67,10 +65,6 @@ public class LineaFactura extends BaseEntity {
 		this.precioUnitario = precioUnitario;
 	}
 
-	public Double getPrecioTotal() {
-		return this.cantidad * this.precioUnitario;
-	}
-
 	public Servicio getServicio() {
 		return servicio;
 	}
@@ -86,5 +80,13 @@ public class LineaFactura extends BaseEntity {
 	public void setFactura(Factura factura) {
 		this.factura = factura;
 	}
+
+	@Override
+	public String toString() {
+		return "LineaFactura [cantidad=" + cantidad + ", descripcion=" + descripcion + ", precioUnitario="
+				+ precioUnitario + ", servicio=" + servicio + ", factura=" + factura + "]";
+	}
+
+	
 
 }

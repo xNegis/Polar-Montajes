@@ -40,12 +40,12 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Michael Isvy
  */
 @Service
-public class proveedorService {
+public class ProveedorService {
 
 	private ProveedorRepository proveedorRepository;
 
 	@Autowired
-	public proveedorService(ProveedorRepository proveedorRepository) {
+	public ProveedorService(ProveedorRepository proveedorRepository) {
 		this.proveedorRepository = proveedorRepository;
 	}
 

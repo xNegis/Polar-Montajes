@@ -1,10 +1,14 @@
 package org.springframework.samples.petclinic.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "linea_pedido")
 public class LineaPedido extends BaseEntity {
 
 	@Column(name = "cantidad")
@@ -17,6 +21,9 @@ public class LineaPedido extends BaseEntity {
 	
 	@ManyToOne
 	private Pedido pedido;
+
+	@ManyToOne
+	private Producto producto;
 
 	public Integer getCantidad() {
 		return cantidad;
@@ -41,7 +48,21 @@ public class LineaPedido extends BaseEntity {
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}
-	
-	
 
+	public Producto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
+	@Override
+	public String toString() {
+		return "LineaPedido [cantidad=" + cantidad + ", descripcion=" + descripcion + ", pedido=" + pedido
+				+ ", producto=" + producto + "]";
+	}
+
+	
+	
 }

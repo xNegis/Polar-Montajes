@@ -140,4 +140,13 @@ public class Nomina extends BaseEntity {
 		this.trabajador = trabajador;
 	}
 
+	@Override
+	public String toString() {
+		return "Nomina [sueldoNeto=" + sueldoNeto + ", sueldoBruto=" + sueldoBruto + ", retenciones=" + retenciones
+				+ ", horasTrabajadas=" + horasTrabajadas + ", horasExtra=" + horasExtra + ", precioHora=" + precioHora
+				+ ", precioHoraExtra=" + precioHoraExtra + ", mesAño=" + mesAño + ", trabajador=" + trabajador + "]";
+	}
+
+	
+	
 }

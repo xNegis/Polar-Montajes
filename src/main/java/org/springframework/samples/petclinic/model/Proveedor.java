@@ -3,8 +3,12 @@ package org.springframework.samples.petclinic.model;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "proveedor")
 public class Proveedor extends BaseEntity {
 
 //	@Column(name = "birth_date")        
@@ -64,6 +68,13 @@ public class Proveedor extends BaseEntity {
 	public void setPedidos(Set<Pedido> pedidos) {
 		this.pedidos = pedidos;
 	}
+
+	@Override
+	public String toString() {
+		return "Proveedor [nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono
+				+ ", correoElectronico=" + correoElectronico + ", pedidos=" + pedidos + "]";
+	}
+
 	
 	
 	
