@@ -45,7 +45,7 @@ import javax.persistence.TemporalType;
  * @author Sam Brannen
  */
 @Entity
-@Table(name = "facturas") 
+@Table(name = "facturas")  
 public class Factura extends BaseEntity {
 
 	@Column(name = "precioTotalSinIva")        
