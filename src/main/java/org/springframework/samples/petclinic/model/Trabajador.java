@@ -62,5 +62,69 @@ public class Trabajador extends Person {
 	@Column(name = "es_gerente")
 	private Boolean esGerente;
 		
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trabajador")
+	private Set<Nomina> nominas;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trabajador")
+	private Set<Pedido> pedidos;
 
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public Boolean getEsGerente() {
+		return esGerente;
+	}
+
+	public void setEsGerente(Boolean esGerente) {
+		this.esGerente = esGerente;
+	}
+
+	public Set<Nomina> getNominas() {
+		return nominas;
+	}
+
+	public void setNominas(Set<Nomina> nominas) {
+		this.nominas = nominas;
+	}
+
+	public Set<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(Set<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+	
+	
+	
+	
 }

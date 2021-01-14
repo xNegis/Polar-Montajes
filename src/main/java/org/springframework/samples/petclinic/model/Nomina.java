@@ -25,6 +25,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -70,6 +71,12 @@ public class Nomina extends BaseEntity {
 	
 	@Column(name = "mes_año")
 	private String mesAño;
+	
+	@ManyToOne
+	@JoinColumn(name = "trabajador")
+	private Trabajador trabajador;
+	
+	
 	
 	
 		
