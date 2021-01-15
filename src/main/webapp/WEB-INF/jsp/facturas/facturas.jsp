@@ -35,7 +35,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<spring:url value="/crearFactura" var="crearFacturasUrl">
+	<spring:url value="/eligeElCliente" var="crearFacturasUrl">
 	</spring:url>
 	<a href="${fn:escapeXml(crearFacturasUrl)}">Crear factura</a>
 </petclinic:layout>

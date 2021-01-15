@@ -145,8 +145,7 @@ public class Factura extends BaseEntity {
 	public String toString() {
 		return "Factura [precioTotalSinIva=" + precioTotalSinIva + ", iva=" + iva + ", precioTotalConIva="
 				+ precioTotalConIva + ", pago=" + pago + ", fechaVencimiento=" + fechaVencimiento + ", fechaEmision="
-				+ fechaEmision + ", pagado=" + pagado + ", cliente=" + cliente + ", trabajador=" + trabajador
-				+ ", lineaFactura=" + lineaFactura + "]";
+				+ fechaEmision + ", pagado=" + pagado + "]";
 	}
 
 }

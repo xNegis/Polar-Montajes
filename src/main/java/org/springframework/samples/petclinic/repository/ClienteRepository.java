@@ -5,15 +5,13 @@ import java.util.List;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.model.Cliente;
-import org.springframework.samples.petclinic.model.Factura;
-import org.springframework.samples.petclinic.model.Servicio;
 
 public interface ClienteRepository extends CrudRepository<Cliente, Integer> {
+	@Override
 	List<Cliente> findAll() throws DataAccessException;
 
-	@Query("SELECT cliente FROM Cliente cliente  WHERE cliente.dni LIKE :dni")
-	Cliente getClienteByDni(@Param("dni") String dni);
+	@Query(value = "SELECT * FROM CLIENTE WHERE CLIENTE.DNI LIKE ?1", nativeQuery = true)
+	Cliente getClienteByDni(String dni);
 
 }

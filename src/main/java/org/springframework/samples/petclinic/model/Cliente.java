@@ -7,9 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "cliente")
@@ -29,7 +26,7 @@ public class Cliente extends Person {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
 	private Set<Factura> facturas;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
 	private Set<Servicio> servicio;
 
@@ -81,7 +78,10 @@ public class Cliente extends Person {
 		this.servicio = servicio;
 	}
 
+	@Override
+	public String toString() {
+		return "Cliente [dni=" + dni + ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion
+				+ "]";
+	}
 
-	
-	
 }
