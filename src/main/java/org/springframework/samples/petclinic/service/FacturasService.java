@@ -58,4 +58,16 @@ public class FacturasService {
 		return facturaRepository.findAll();
 	}
 
+	public int getNumFacturas() {
+		return facturaRepository.findAll().size();
+	}
+
+	public void actualizarPrecioFactura(Integer id, Double precioTotal) {
+		this.facturaRepository.actualizarPrecio(id, precioTotal);
+	}
+
+	public void deleteById(Integer facturaId) {
+		this.facturaRepository.deleteById(facturaId);
+	}
+
 }

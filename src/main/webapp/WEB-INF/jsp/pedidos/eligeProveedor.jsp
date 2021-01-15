@@ -11,14 +11,13 @@
 
      <form:form modelAttribute="proveedor" class="form-horizontal" id="add-pilot-form" actions="/pedidos/pedidosEligeProveedor"  > 
         <div class="form-group has-feedback">
-
             <petclinic:inputField label="ID proveedor" name="id"/>
-          
+     
            
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">         
-                        <button class="btn btn-default" type="submit">Crear trabajador</button>
+                        <button class="btn btn-default" type="submit">Comenzar creación del pedido</button>
             </div>
         </div>
      </form:form> 

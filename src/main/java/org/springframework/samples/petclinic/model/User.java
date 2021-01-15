@@ -15,15 +15,15 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "users")
-public class User{
+public class User {
 	@Id
 	String username;
-	
+
 	String password;
 	String dni;
-	
+
 	boolean enabled;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private Set<Authorities> authorities;
 }

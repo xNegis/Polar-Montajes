@@ -15,19 +15,13 @@
  */
 package org.springframework.samples.petclinic.service;
 
-
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.samples.petclinic.model.Factura;
 import org.springframework.samples.petclinic.model.LineaFactura;
-import org.springframework.samples.petclinic.model.Trabajador;
-import org.springframework.samples.petclinic.model.User;
-import org.springframework.samples.petclinic.repository.FacturaRepository;
 import org.springframework.samples.petclinic.repository.LineaFacturaRepository;
-import org.springframework.samples.petclinic.repository.TrabajadoresRepository;
-import org.springframework.samples.petclinic.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,12 +43,16 @@ public class LineaFacturaService {
 
 	@Transactional
 	public void saveLineaFactura(LineaFactura lineaFactura) throws DataAccessException {
-		lineaFacturaRepository.save(lineaFactura);	
+		lineaFacturaRepository.save(lineaFactura);
 	}
-	
+
 	public Optional<LineaFactura> findLineaFactura(Integer id) {
 		return lineaFacturaRepository.findById(id);
 	}
-	
-	
+
+	public List<LineaFactura> findLineasFacturaPorFactura(Integer id) {
+		return this.lineaFacturaRepository.findAllByFacturaId(id);
+//		return new ArrayList<LineaFactura>();
+	}
+
 }
