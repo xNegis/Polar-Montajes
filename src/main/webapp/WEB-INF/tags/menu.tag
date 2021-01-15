@@ -77,6 +77,22 @@
 					<span>Mis nóminas</span>
 				</petclinic:menuItem>
 					</sec:authorize>
+					
+					<sec:authorize access="hasAuthority('trabajador')">
+					<petclinic:menuItem active="${name eq 'servicios'}" url="/todosservicios"
+					title="servicios">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Servicios</span>
+				</petclinic:menuItem>
+					</sec:authorize>
+					
+					<sec:authorize access="hasAuthority('gerente')">
+					<petclinic:menuItem active="${name eq 'servicios'}" url="/todosservicios"
+					title="servicios">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Servicios</span>
+				</petclinic:menuItem>
+					</sec:authorize>
 				
 				<sec:authorize access="hasAuthority('cliente')">
 
@@ -106,6 +122,14 @@
 					title="Contact page">
 					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 					<span>Contacto</span>
+				</petclinic:menuItem>
+				</sec:authorize>
+				
+				<sec:authorize access="hasAuthority('gerente')">
+				<petclinic:menuItem active="${name eq 'vacas1'}" url="/trabajador/periodoVacaciones/Todos"
+					title="vacacionesAll">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Vacaciones</span>
 				</petclinic:menuItem>
 				</sec:authorize>
 				

@@ -57,10 +57,10 @@ INSERT INTO proveedor(id,correo_electronico,direccion,nombre,telefono) VALUES(3,
 INSERT INTO proveedor(id,correo_electronico,direccion,nombre,telefono) VALUES(4,'email@hotmail.es','Calle Monzon','Proveedor4','636558541');
 INSERT INTO proveedor(id,correo_electronico,direccion,nombre,telefono) VALUES(5,'email@hotmail.es','Calle Monzon','Proveedor5','636558541');
 
-INSERT INTO periodo_vacaciones(id,fecha_inicio, fecha_fin, vacaciones, trabajador) VALUES (1,'2020-08-16','2020-08-26', 'VERANO', 1);
-INSERT INTO periodo_vacaciones(id,fecha_inicio, fecha_fin, vacaciones, trabajador) VALUES (2,'2020-06-12','2020-06-22', 'VERANO', 2);
-INSERT INTO periodo_vacaciones(id,fecha_inicio, fecha_fin, vacaciones, trabajador) VALUES (3,'2020-04-09','2020-04-19', 'VERANO', 3);
-INSERT INTO periodo_vacaciones(id,fecha_inicio, fecha_fin, vacaciones, trabajador) VALUES (4,'2020-02-23','2020-03-03', 'VERANO', 4);
+INSERT INTO periodo_vacaciones(id,fecha_inicio, fecha_fin, estado, vacaciones, trabajador) VALUES (1,'2020-08-16','2020-08-26', 'ACEPTADA', 'VERANO', 1);
+INSERT INTO periodo_vacaciones(id,fecha_inicio, fecha_fin, estado, vacaciones, trabajador) VALUES (2,'2020-06-12','2020-06-22', 'DENEGADA','VERANO', 2);
+INSERT INTO periodo_vacaciones(id,fecha_inicio, fecha_fin, estado, vacaciones, trabajador) VALUES (3,'2020-04-09','2020-04-19', 'PENDIENTE','VERANO', 3);
+INSERT INTO periodo_vacaciones(id,fecha_inicio, fecha_fin, estado, vacaciones, trabajador) VALUES (4,'2020-02-23','2020-03-03', 'ACEPTADA','VERANO', 4);
 
 INSERT INTO nomina(id,sueldo_neto,sueldo_bruto,retenciones,horas_trabajadas,horas_extra,precio_hora,precio_hora_extra,mes_año,trabajador) VALUES (1,2300,2500,0.12,200,30,12,15,'05-2020',1);
 INSERT INTO nomina(id,sueldo_neto,sueldo_bruto,retenciones,horas_trabajadas,horas_extra,precio_hora,precio_hora_extra,mes_año,trabajador) VALUES (2,2300,2500,0.12,200,30,12,15,'05-2020',2);

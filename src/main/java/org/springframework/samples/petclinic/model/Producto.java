@@ -36,9 +36,9 @@ public class Producto extends NamedEntity {
 		this.producto = producto;
 	}
 
-	@Override
-	public String toString() {
-		return "Producto [precio=" + precio + ", producto=" + producto + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Producto [precio=" + precio + ", producto=" + producto + "]";
+//	}
 
 }

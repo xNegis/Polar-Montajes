@@ -91,11 +91,11 @@ public class Pedido extends BaseEntity {
 		this.lineaspedido.add(x);
 	}
 	
-	@Override
-	public String toString() {
-		return "Pedido [fecha=" + fecha + ", precio=" + precio + ", pagado=" + pagado 
-				+  "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Pedido [fecha=" + fecha + ", precio=" + precio + ", pagado=" + pagado 
+//				+  "]";
+//	}
 
 	
 

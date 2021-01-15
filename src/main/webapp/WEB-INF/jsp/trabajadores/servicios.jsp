@@ -3,15 +3,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	
 
-
-<petclinic:layout pageName="misservicios">
+<petclinic:layout pageName="servicios">
 	<h2>
-		Mis servicios
+		Todos los servicios
 	</h2>
 	
 	<c:if test="${servicios.size() == 0}">
-	<h2>¡No hay servicios asociados! :<(</h2>
+	<h2>¡No hay servicios! :<(</h2>
 	</c:if>
 	
 	<c:if test="${servicios.size() > 0}">
@@ -43,4 +46,10 @@
 		</tbody>
 	</table>
 		</c:if>
+		
+		<sec:authorize access="hasAuthority('gerente')">
+		<spring:url value="/nuevoservicio" var="servicioUrl">
+						</spring:url> <a  class="button" href="${fn:escapeXml(servicioUrl)}">Dar de alta nuevo servicio</a> 
+					</sec:authorize>
+
 </petclinic:layout>

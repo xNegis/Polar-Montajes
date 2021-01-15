@@ -69,11 +69,11 @@ public class Proveedor extends BaseEntity {
 		this.pedidos = pedidos;
 	}
 
-	@Override
-	public String toString() {
-		return "Proveedor [nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono
-				+ ", correoElectronico=" + correoElectronico + ", pedidos=" + pedidos + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Proveedor [nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono
+//				+ ", correoElectronico=" + correoElectronico + ", pedidos=" + pedidos + "]";
+//	}
 
 	
 	
