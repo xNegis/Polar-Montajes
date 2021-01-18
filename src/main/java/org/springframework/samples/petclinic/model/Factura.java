@@ -143,9 +143,7 @@ public class Factura extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Factura [precioTotalSinIva=" + precioTotalSinIva + ", iva=" + iva + ", precioTotalConIva="
-				+ precioTotalConIva + ", pago=" + pago + ", fechaVencimiento=" + fechaVencimiento + ", fechaEmision="
-				+ fechaEmision + ", pagado=" + pagado + "]";
+		return "Factura [id = " + this.id + "]";
 	}
 
 }

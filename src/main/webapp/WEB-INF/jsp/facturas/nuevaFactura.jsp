@@ -8,6 +8,7 @@
 
 <petclinic:layout pageName="misfacturas">
 	<h2>Lineas de la factura</h2>
+	<c:out value="${facturaId}"></c:out>
 
 
 	<table id="facturasTable" class="table table-striped">
@@ -23,7 +24,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${lf}" var="l">
+			<c:forEach items="${lineasFactura}" var="l">
 				<tr>
 					<td><c:out value="${l.cantidad}" /></td>
 					<td><c:out value="${l.descripcion}" /></td>
@@ -35,14 +36,17 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<spring:url value="/facturas/nuevaLineaFactura/{facturaId}" var="leagueUrl">
-	<spring:param name="facturaID" value="${facturaId}" />
+	<spring:url value="/facturas/nuevaLineaFactura/{facturaId}"
+		var="leagueUrl">
+		<spring:param name="facturaId" value="${facturaId}" />
 	</spring:url>
 	<a class="button" href="${fn:escapeXml(leagueUrl)}">Crear nueva
 		linea factura</a>
-	<spring:url value="/factura/nuevaLineaFactura" var="leagueUrl">
+	<spring:url value="/factura/TerminarFactura/{facturaId}" var="leaguUrl">
+	<spring:param name="facturaId" value="${facturaId}" />
 	</spring:url>
-	<a class="button" href="${fn:escapeXml(leagueUrl)}">Terminar factura</a>
+	<a class="button" href="${fn:escapeXml(leaguUrl)}">Terminar
+		factura</a>
 
 
 </petclinic:layout>

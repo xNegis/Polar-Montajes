@@ -70,4 +70,17 @@ public class FacturasService {
 		this.facturaRepository.deleteById(facturaId);
 	}
 
+	public void terminarFactura(Integer facturaId) {
+		Factura factura = this.facturaRepository.findById(facturaId).get();
+		Double precioSinIva = factura.getPrecioTotalSinIva();
+		Double iva = 0.21 * precioSinIva;
+		Double precioConIva = 1.21 * precioSinIva;
+		this.facturaRepository.terminarFactura(facturaId, iva, precioConIva);
+
+	}
+
+	public void pagarFactura(Integer facturaId) {
+		this.facturaRepository.pagarFactura(facturaId);
+	}
+
 }

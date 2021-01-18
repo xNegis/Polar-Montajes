@@ -77,6 +77,7 @@ INSERT INTO factura(id,precio_total_sin_iva,iva,precio_total_con_iva,pago,fecha_
 INSERT INTO servicio(id,tiempo_empleado,fecha_inicio,fecha_fin,tipo_servicio,cliente,trabajador) VALUES (1,23.5,'2020-05-24','2020-05-24','MANTENIMIENTO',1,1);
 INSERT INTO servicio(id,tiempo_empleado,fecha_inicio,fecha_fin,tipo_servicio,cliente,trabajador) VALUES (2,23.5,'2020-05-24','2020-05-24','MANTENIMIENTO',2,1);
 INSERT INTO servicio(id,tiempo_empleado,fecha_inicio,fecha_fin,tipo_servicio,cliente,trabajador) VALUES (3,23.5,'2020-05-24','2020-05-24','MANTENIMIENTO',3,1);
+INSERT INTO servicio(id,tiempo_empleado,fecha_inicio,fecha_fin,tipo_servicio,cliente,trabajador) VALUES (4,2.5,'2020-06-24','2020-06-24','MANTENIMIENTO',2,1);
 
 
 

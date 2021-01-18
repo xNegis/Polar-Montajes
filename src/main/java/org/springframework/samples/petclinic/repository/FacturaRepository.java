@@ -18,36 +18,35 @@ package org.springframework.samples.petclinic.repository;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.model.Factura;
+import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Repository class for <code>Vet</code> domain objects All method names are
- * compliant with Spring Data naming conventions so this interface can easily be
- * extended for Spring Data See here:
- * http://static.springsource.org/spring-data/jpa/docs/current/reference/html/jpa.repositories.html#jpa.query-methods.query-creation
- *
- * @author Ken Krebs
- * @author Juergen Hoeller
- * @author Sam Brannen
- * @author Michael Isvy
- */
 public interface FacturaRepository extends CrudRepository<Factura, Integer> {
 
-	/**
-	 * Retrieve all <code>Vet</code>s from the data store.
-	 * 
-	 * @return a <code>Collection</code> of <code>Vet</code>s
-	 */
 	@Override
 	List<Factura> findAll() throws DataAccessException;
 
 	@Query("SELECT factura FROM Factura factura WHERE factura.cliente.dni LIKE :dni")
 	List<Factura> findFacturasByDniCliente(@Param("dni") String dni);
 
+	@Transactional
+	@Modifying
 	@Query("UPDATE Factura f SET f.precioTotalSinIva = :precioTotal WHERE f.id = :id")
 	void actualizarPrecio(@Param("id") Integer id, @Param("precioTotal") Double precioTotal);
+
+	@Transactional
+	@Modifying
+	@Query("UPDATE Factura f SET f.iva = :iva, f.precioTotalConIva = :precioConIva WHERE f.id = :id")
+	void terminarFactura(@Param("id") Integer facturaId, @Param("iva") Double iva,
+			@Param("precioConIva") Double precioConIva);
+
+	@Transactional
+	@Modifying
+	@Query("UPDATE Factura f SET f.pagada = true WHERE f.id = :facturaId")
+	void pagarFactura(@Param("facturaId") Integer facturaId);
 
 }

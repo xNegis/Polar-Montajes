@@ -18,6 +18,7 @@
 				<th>IVA</th>
 				<th>Precio total con IVA</th>
 				<th>Pagada</th>
+				<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,6 +31,16 @@
 					<td><c:out value="${factura.iva}" /></td>
 					<td><c:out value="${factura.precioTotalConIva}" /></td>
 					<td><c:out value="${factura.pagado}" /></td>
+					<td><spring:url
+							value="/facturas/{facturaId}"
+							var="putOnSaleUrl">
+							<spring:param name="facturaId" value="${factura.id}" />
+						</spring:url> <a href="${fn:escapeXml(putOnSaleUrl)}">Visualizar factura</a></td>
+					<td><spring:url
+							value="/facturas/pagarFactura/{facturaId}"
+							var="putOnSaleUrl">
+							<spring:param name="facturaId" value="${factura.id}" />
+						</spring:url> <a href="${fn:escapeXml(putOnSaleUrl)}">Pagar factura</a></td>
 
 				</tr>
 			</c:forEach>

@@ -29,6 +29,6 @@ public interface LineaFacturaRepository extends CrudRepository<LineaFactura, Int
 	List<LineaFactura> findAll() throws DataAccessException;
 
 	@Query(value = "SELECT * FROM LINEA_FACTURA WHERE LINEA_FACTURA.factura = ?1", nativeQuery = true)
-	List<LineaFactura> findAllByFacturaId(@Param("dni") Integer id);
+	List<LineaFactura> findAllByFacturaId(@Param("id") Integer id);
 
 }

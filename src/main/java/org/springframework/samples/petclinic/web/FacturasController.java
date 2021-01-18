@@ -79,7 +79,7 @@ public class FacturasController {
 	@GetMapping("/facturas/initFactura/{dniCliente}")
 	public ModelAndView initFactura(@PathVariable("dniCliente") String dniCliente) {
 		System.out.println(dniCliente);
-		ModelAndView mav = new ModelAndView("/facturas/nuevaFactura");
+		ModelAndView mav = new ModelAndView("redirect:/facturas/nuevaFactura");
 		Factura factura = new Factura();
 		Cliente cliente = this.clienteService.getClienteByDni(dniCliente.trim());
 		factura.setCliente(cliente);
@@ -96,34 +96,60 @@ public class FacturasController {
 	@GetMapping(value = "/facturas/nuevaFactura")
 	public String initCreationForm66(Map<String, Object> model) {
 		Factura factura = this.facturaService.findFactura(this.facturaService.getNumFacturas()).get();
+		System.out.println(factura.getId());
 		List<LineaFactura> lf = this.lineaFacturaService.findLineasFacturaPorFactura(factura.getId());
-		Double precioTotal = lf.stream().mapToDouble(x -> x.getPrecioUnitario() * x.getCantidad()).sum();
-		this.facturaService.actualizarPrecioFactura(factura.getId(), precioTotal);
-		model.put("lineasFactura", lf);
+		if (lf.size() > 0) {
+			Double precioTotal = lf.stream().mapToDouble(x -> x.getPrecioUnitario() * x.getCantidad()).sum();
+			this.facturaService.actualizarPrecioFactura(factura.getId(), precioTotal);
+			model.put("lineasFactura", lf);
+		}
 		model.put("facturaId", factura.getId());
 		return "facturas/nuevaFactura";
 	}
 
 	@GetMapping(value = "/facturas/nuevaLineaFactura/{facturaId}")
-	public String initCreationForm3(@PathVariable("pedidoId") Integer facturaId, Map<String, Object> model) {
-		model.put("facturaId", facturaId);
-		model.put("lineaFactura", new LineaFactura());
-		return "pedidos/nuevaLineaFactura";
+	public ModelAndView initCreationForm3(@PathVariable("facturaId") String facturaId) {
+		ModelAndView mav = new ModelAndView("facturas/nuevaLineaFactura");
+		mav.addObject("facturaId", facturaId);
+		mav.addObject("lineaFactura", new LineaFactura());
+		return mav;
 	}
 
 	@PostMapping(value = "/facturas/nuevaLineaFactura/{facturaId}")
-	public String initCreationForm5(@PathVariable("pedidoId") Integer facturaId, LineaFactura lineaFactura,
+	public String initCreationForm5(@PathVariable("facturaId") String facturaId, LineaFactura lineaFactura,
 			Map<String, Object> model) {
-		Factura factura = this.facturaService.findFactura(facturaId).get();
+		Factura factura = this.facturaService.findFactura(Integer.parseInt(facturaId)).get();
 		lineaFactura.setFactura(factura);
 		this.lineaFacturaService.saveLineaFactura(lineaFactura);
-		return "redirect:/pedidos/nuevoPedido";
+		return "redirect:/facturas/nuevaFactura";
 	}
 
 	@GetMapping(value = "/facturas/deleteFactura/{pedidoId}")
 	public String initCreationForm533(@PathVariable("pedidoId") Integer facturaId, Map<String, Object> model) {
 		this.facturaService.deleteById(facturaId);
 		return "redirect:/facturas";
+	}
+
+	@GetMapping("/factura/TerminarFactura/{facturaId}")
+	public ModelAndView terminarFactura(@PathVariable("facturaId") Integer facturaId) {
+		ModelAndView mav = new ModelAndView("redirect:/facturas");
+		this.facturaService.terminarFactura(facturaId);
+		return mav;
+
+	}
+
+	@GetMapping("/facturas/{facturaId}")
+	public ModelAndView visualizarFactura(@PathVariable("facturaId") Integer facturaId) {
+		ModelAndView mav = new ModelAndView("facturas/visualizarFactura");
+		mav.addObject("factura", this.facturaService.findFactura(facturaId));
+		return mav;
+	}
+
+	@GetMapping("/facturas/pagarFactura/{facturaId}")
+	public ModelAndView pagarFactura(@PathVariable("facturaId") Integer facturaId) {
+		ModelAndView mav = new ModelAndView("redirect:/facturas");
+		this.facturaService.pagarFactura(facturaId);
+		return mav;
 	}
 
 }
