@@ -9,17 +9,17 @@
 
 <petclinic:layout pageName="nuevaLineaFactura">
 
-     <form:form modelAttribute="lineaPedido" class="form-horizontal" id="add-pilot-form" actions="/pedidos/nuevoPedido/nuevaLineaPedido/${pedidoId}"  > 
+     <form:form modelAttribute="lineaFactura" class="form-horizontal" id="add-lineaFactura-form" actions="/factura/nuevaLineaFactura/${facturaId}"  > 
         <div class="form-group has-feedback">
 
-            <petclinic:inputField label="cantidad" name="producto.id"/>
-            <petclinic:inputField label="descripcion" name="descripcion"/>
-            <petclinic:inputField label="precioUnitario" name="precio"/>
-            <petclinic:inputField label="Cantidad" name="cantidad"/>
+            <petclinic:inputField label="cantidad" name="Cantidad"/>
+            <petclinic:inputField label="descripcion" name="Descripcion"/>
+            <petclinic:inputField label="precioUnitario" name="precioUnitario"/>
+            <petclinic:inputField label="servicio" name="Servicio"/>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">         
-                        <button class="btn btn-default" type="submit">Crear Linea pedido al pedido <c:out value="${pedidoId}"></c:out></button>
+                        <button class="btn btn-default" type="submit">Crear Linea Factura a la factura <c:out value="${facturaId}"></c:out></button>
             </div>
         </div>
      </form:form> 

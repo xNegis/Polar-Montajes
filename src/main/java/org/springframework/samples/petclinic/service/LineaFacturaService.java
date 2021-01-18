@@ -51,8 +51,8 @@ public class LineaFacturaService {
 	}
 
 	public List<LineaFactura> findLineasFacturaPorFactura(Integer id) {
-		return this.lineaFacturaRepository.findAllByFacturaId(id);
-//		return new ArrayList<LineaFactura>();
+		List<LineaFactura> lf = this.lineaFacturaRepository.findAllByFacturaId(id);
+		return lf;
 	}
 
 }
