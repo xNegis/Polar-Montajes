@@ -46,7 +46,7 @@ public interface FacturaRepository extends CrudRepository<Factura, Integer> {
 
 	@Transactional
 	@Modifying
-	@Query("UPDATE Factura f SET f.pagada = true WHERE f.id = :facturaId")
+	@Query("UPDATE Factura f SET f.pagado = true WHERE f.id = :facturaId")
 	void pagarFactura(@Param("facturaId") Integer facturaId);
 
 }

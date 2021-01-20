@@ -141,7 +141,8 @@ public class FacturasController {
 	@GetMapping("/facturas/{facturaId}")
 	public ModelAndView visualizarFactura(@PathVariable("facturaId") Integer facturaId) {
 		ModelAndView mav = new ModelAndView("facturas/visualizarFactura");
-		mav.addObject("factura", this.facturaService.findFactura(facturaId));
+		mav.addObject("factura", this.facturaService.findFactura(facturaId).get());
+		mav.addObject("lineasFactura", this.lineaFacturaService.findLineasFacturaPorFactura(facturaId));
 		return mav;
 	}
 
@@ -150,6 +151,6 @@ public class FacturasController {
 		ModelAndView mav = new ModelAndView("redirect:/facturas");
 		this.facturaService.pagarFactura(facturaId);
 		return mav;
-	}
 
+	}
 }
