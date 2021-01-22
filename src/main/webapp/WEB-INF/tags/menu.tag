@@ -10,8 +10,6 @@
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand"
-				href="<spring:url value="/" htmlEscape="true" />"><span></span></a>
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#main-navbar">
 				<span class="sr-only"><os-p>Toggle navigation</os-p></span> <span
@@ -27,6 +25,38 @@
 					title="home page">
 					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 					<span>Página Principal</span>
+				</petclinic:menuItem>
+				</sec:authorize>
+				
+				<sec:authorize access="isAnonymous()">
+				<petclinic:menuItem active="${name eq 'trabajadores'}" url="/trabajadoresT"
+					title="home page">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Trabajadores</span>
+				</petclinic:menuItem>
+				</sec:authorize>
+				
+				<sec:authorize access="hasAuthority('cliente')">
+				<petclinic:menuItem active="${name eq 'trabajadores'}" url="/trabajadoresT"
+					title="home page">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Trabajadores</span>
+				</petclinic:menuItem>
+				</sec:authorize>
+				
+				<sec:authorize access="isAnonymous()">
+				<petclinic:menuItem active="${name eq 'servicios'}" url="/servicios"
+					title="home page">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Servicios</span>
+				</petclinic:menuItem>
+				</sec:authorize>
+				
+				<sec:authorize access="isAnonymous()">
+				<petclinic:menuItem active="${name eq 'contacto'}" url="/contacto"
+					title="home page">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Contacto</span>
 				</petclinic:menuItem>
 				</sec:authorize>
 				
@@ -70,6 +100,30 @@
 				</petclinic:menuItem>
 					</sec:authorize>
 					
+					<sec:authorize access="hasAuthority('gerente')">
+					<petclinic:menuItem active="${name eq 'facturas'}" url="/facturas"
+					title="nóminas">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Facturas</span>
+				</petclinic:menuItem>
+					</sec:authorize>
+					
+					<sec:authorize access="hasAuthority('gerente')">
+					<petclinic:menuItem active="${name eq 'pedidos'}" url="/pedidos"
+					title="nóminas">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Pedidos</span>
+				</petclinic:menuItem>
+					</sec:authorize>
+					
+					<sec:authorize access="hasAuthority('gerente')">
+					<petclinic:menuItem active="${name eq 'clientes'}" url="/clientes"
+					title="nóminas">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Clientes</span>
+				</petclinic:menuItem>
+					</sec:authorize>
+					
 					<sec:authorize access="hasAuthority('trabajador')">
 					<petclinic:menuItem active="${name eq 'misnominas'}" url="/misnominas"
 					title="misnóminas">
@@ -106,14 +160,6 @@
 					title="mis facturas">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Mis facturas</span>
-				</petclinic:menuItem>
-				</sec:authorize>
-
-				<sec:authorize access="isAnonymous()">
-				<petclinic:menuItem active="${name eq 'home'}" url="/contacto"
-					title="Contact page">
-					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-					<span>Contacto</span>
 				</petclinic:menuItem>
 				</sec:authorize>
 				

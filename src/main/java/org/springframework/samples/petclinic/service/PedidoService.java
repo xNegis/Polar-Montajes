@@ -15,13 +15,11 @@
  */
 package org.springframework.samples.petclinic.service;
 
-
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.model.LineaPedido;
 import org.springframework.samples.petclinic.model.Pedido;
 import org.springframework.samples.petclinic.repository.PedidoRepository;
@@ -46,26 +44,27 @@ public class PedidoService {
 
 	@Transactional
 	public void savePedido(Pedido pedido) throws DataAccessException {
-		pedidoRepository.save(pedido);	
+		pedidoRepository.save(pedido);
 	}
-	
+
 	public Optional<Pedido> findPedido(Integer id) {
 		return pedidoRepository.findById(id);
 	}
-	
 
 	public List<Pedido> findAll() {
 		return pedidoRepository.findAll();
-	}	
-	
+	}
+
 	public List<LineaPedido> findLineasPedidoPorPedido(Integer id) {
 		return pedidoRepository.findLineasPedidoPorPedido(id);
-	}	
+	}
+
 	public void actualizarPrecioPedido(int id, Double precio) {
 		this.pedidoRepository.actualizarPrecioPedido(id, precio);
 	}
+
 	public void deleteById(int id) {
-		this.pedidoRepository.deleteById(id);;
+		this.pedidoRepository.deleteById(id);
 	}
-	
+
 }

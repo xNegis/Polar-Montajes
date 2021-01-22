@@ -22,7 +22,7 @@
 				<th>horasExtra</th>
 				<th>precioHora</th>
 				<th>precioHoraExtra</th>
-				<th>mesAño</th>
+				<th>Fecha</th>
 				
 			</tr>
 		</thead>

@@ -44,5 +44,7 @@
 <spring:url value="/pedidos/nuevoPedido/nuevaLineaPedido/{pedidoId}" var="leagueUrl">
 							<spring:param name="pedidoId" value="${pedidoId}" />
 						
-						</spring:url> <a class="button" href="${fn:escapeXml(leagueUrl)}">Añadir linea al pedido</a> 
+						</spring:url> <a class="button" href="${fn:escapeXml(leagueUrl)}">Añadir linea al pedido</a>
+<spring:url value="/pedidos/" var="leagueUrl">
+						</spring:url> <a class="button" href="${fn:escapeXml(leagueUrl)}">Terminar pedido</a> 
 </petclinic:layout>

@@ -29,26 +29,26 @@ INSERT INTO authorities(id,username,authority) VALUES (9,'martorsan13','admin');
 
 
 -- Usuario de martorsan13 como owner
-INSERT INTO users(username,password,enabled) VALUES ('12378321F','gerente',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (10,'12378321F','gerente');
+INSERT INTO users(username,password,enabled) VALUES ('10000000E','gerente',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (10,'10000000E','gerente');
 -- Usuario de martorsan13 como owner
-INSERT INTO users(username,password,enabled) VALUES ('12312321F','cliente',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (11,'12312321F','cliente');
+INSERT INTO users(username,password,enabled) VALUES ('20000000A','cliente',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (11,'20000000A','cliente');
 -- Usuario de martorsan13 como owner
-INSERT INTO users(username,password,enabled) VALUES ('13412321F','trabajador',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (12,'13412321F','trabajador');
+INSERT INTO users(username,password,enabled) VALUES ('10000000A','trabajador',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (12,'10000000A','trabajador');
 
-INSERT INTO trabajador(id,first_name,last_name,dni, email, direccion, telefono, es_gerente) VALUES(1,'Antonio','Campuzano','13412321F','email@hotmail.es','Calle Monzon','636558541',false);
-INSERT INTO trabajador(id,first_name,last_name,dni, email, direccion, telefono, es_gerente) VALUES(2,'Sergio','Rojas','12312521F','email@hotmail.es','Calle Monzon','636558541',false);
-INSERT INTO trabajador(id,first_name,last_name,dni, email, direccion, telefono, es_gerente) VALUES(3,'Miguel','Nieva','12312821F','email@hotmail.es','Calle Monzon','636558541',false);
-INSERT INTO trabajador(id,first_name,last_name,dni, email, direccion, telefono, es_gerente) VALUES(4,'Mariano','Torrado','12412321F','email@hotmail.es','Calle Monzon','636558541',false);
-INSERT INTO trabajador(id,first_name,last_name,dni, email, direccion, telefono, es_gerente) VALUES(5,'Alvaro','Cortes','12378321F','email@hotmail.es','Calle Monzon','636558541',true);
+INSERT INTO trabajador(id,first_name,last_name,dni, email, direccion, telefono, es_gerente) VALUES(1,'Antonio','Campuzano','10000000A','email@hotmail.es','Calle Monzon','636558541',false);
+INSERT INTO trabajador(id,first_name,last_name,dni, email, direccion, telefono, es_gerente) VALUES(2,'Sergio','Rojas','10000000B','email@hotmail.es','Calle Monzon','636558541',false);
+INSERT INTO trabajador(id,first_name,last_name,dni, email, direccion, telefono, es_gerente) VALUES(3,'Miguel','Nieva','10000000C','email@hotmail.es','Calle Monzon','636558541',false);
+INSERT INTO trabajador(id,first_name,last_name,dni, email, direccion, telefono, es_gerente) VALUES(4,'Mariano','Torrado','10000000D','email@hotmail.es','Calle Monzon','636558541',false);
+INSERT INTO trabajador(id,first_name,last_name,dni, email, direccion, telefono, es_gerente) VALUES(5,'Alvaro','Cortes','10000000E','email@hotmail.es','Calle Monzon','636558541',true);
 
-INSERT INTO cliente(id,first_name,last_name, correo, direccion, dni,telefono) VALUES(1,'Cliente','1','email@hotmail.es','Calle Monzon','12312321F','636558541');
-INSERT INTO cliente(id,first_name,last_name, correo, direccion, dni,telefono) VALUES(2,'Cliente','2','email@hotmail.es','Calle Monzon','12315361F','636558541');
-INSERT INTO cliente(id,first_name,last_name, correo, direccion, dni,telefono) VALUES(3,'Cliente','3','email@hotmail.es','Calle Monzon','12312421F','636558541');
-INSERT INTO cliente(id,first_name,last_name, correo, direccion, dni,telefono) VALUES(4,'Cliente','4','email@hotmail.es','Calle Monzon','12372921F','636558541');
-INSERT INTO cliente(id,first_name,last_name, correo, direccion, dni,telefono) VALUES(5,'Cliente','5','email@hotmail.es','Calle Monzon','12316521F','636558541');
+INSERT INTO cliente(id,first_name,last_name, correo, direccion, dni,telefono) VALUES(1,'Cliente','1','email@hotmail.es','Calle Monzon','20000000A','636558541');
+INSERT INTO cliente(id,first_name,last_name, correo, direccion, dni,telefono) VALUES(2,'Cliente','2','email@hotmail.es','Calle Monzon','20000000B','636558541');
+INSERT INTO cliente(id,first_name,last_name, correo, direccion, dni,telefono) VALUES(3,'Cliente','3','email@hotmail.es','Calle Monzon','20000000C','636558541');
+INSERT INTO cliente(id,first_name,last_name, correo, direccion, dni,telefono) VALUES(4,'Cliente','4','email@hotmail.es','Calle Monzon','20000000D','636558541');
+INSERT INTO cliente(id,first_name,last_name, correo, direccion, dni,telefono) VALUES(5,'Cliente','5','email@hotmail.es','Calle Monzon','20000000E','636558541');
 
 
 INSERT INTO proveedor(id,correo_electronico,direccion,nombre,telefono) VALUES(1,'email@hotmail.es','Calle Monzon','Proveedor1','636558541');
@@ -68,11 +68,9 @@ INSERT INTO nomina(id,sueldo_neto,sueldo_bruto,retenciones,horas_trabajadas,hora
 INSERT INTO nomina(id,sueldo_neto,sueldo_bruto,retenciones,horas_trabajadas,horas_extra,precio_hora,precio_hora_extra,mes_año,trabajador) VALUES (4,2300,2500,0.12,200,30,12,15,'05-2020',4);
 INSERT INTO nomina(id,sueldo_neto,sueldo_bruto,retenciones,horas_trabajadas,horas_extra,precio_hora,precio_hora_extra,mes_año,trabajador) VALUES (5,2300,2500,0.12,200,30,12,15,'05-2020',5);
 
-INSERT INTO factura(id,precio_total_sin_iva,iva,precio_total_con_iva,pago,fecha_vencimiento,fecha_emision,pagado,cliente,trabajador) VALUES (1,203.2,0.21,300.2,'EFECTIVO','2020-09-09','2020-08-09',true,1,1);
-INSERT INTO factura(id,precio_total_sin_iva,iva,precio_total_con_iva,pago,fecha_vencimiento,fecha_emision,pagado,cliente,trabajador) VALUES (2,203.2,0.21,300.2,'EFECTIVO','2020-09-09','2020-08-09',true,2,2);
-INSERT INTO factura(id,precio_total_sin_iva,iva,precio_total_con_iva,pago,fecha_vencimiento,fecha_emision,pagado,cliente,trabajador) VALUES (3,203.2,0.21,300.2,'EFECTIVO','2020-09-09','2020-08-09',true,3,3);
-INSERT INTO factura(id,precio_total_sin_iva,iva,precio_total_con_iva,pago,fecha_vencimiento,fecha_emision,pagado,cliente,trabajador) VALUES (4,203.2,0.21,300.2,'EFECTIVO','2020-09-09','2020-08-09',true,4,4);
-INSERT INTO factura(id,precio_total_sin_iva,iva,precio_total_con_iva,pago,fecha_vencimiento,fecha_emision,pagado,cliente,trabajador) VALUES (5,203.2,0.21,300.2,'EFECTIVO','2020-09-09','2020-08-09',true,5,5);
+INSERT INTO factura(id,precio_total_sin_iva,iva,precio_total_con_iva,pago,fecha_vencimiento,fecha_emision,pagado,cliente,trabajador) VALUES (1,203.2,42.7,245.9,'EFECTIVO','2020-09-09','2020-08-09',true,1,1);
+INSERT INTO factura(id,precio_total_sin_iva,iva,precio_total_con_iva,pago,fecha_vencimiento,fecha_emision,pagado,cliente,trabajador) VALUES (2,100,21,121,'EFECTIVO','2020-09-09','2020-08-09',true,2,2);
+INSERT INTO factura(id,precio_total_sin_iva,iva,precio_total_con_iva,pago,fecha_vencimiento,fecha_emision,pagado,cliente,trabajador) VALUES (3,200,42,242,'EFECTIVO','2020-09-09','2020-08-09',true,3,3);
 
 INSERT INTO servicio(id,tiempo_empleado,fecha_inicio,fecha_fin,tipo_servicio,cliente,trabajador) VALUES (1,23.5,'2020-05-24','2020-05-24','MANTENIMIENTO',1,1);
 INSERT INTO servicio(id,tiempo_empleado,fecha_inicio,fecha_fin,tipo_servicio,cliente,trabajador) VALUES (2,23.5,'2020-05-24','2020-05-24','MANTENIMIENTO',2,1);

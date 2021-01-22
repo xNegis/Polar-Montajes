@@ -17,8 +17,6 @@
 				<th>Precio total sin IVA</th>
 				<th>IVA</th>
 				<th>Precio total con IVA</th>
-				<th>Pagada</th>
-				<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,7 +28,6 @@
 					<td><c:out value="${factura.precioTotalSinIva}" /></td>
 					<td><c:out value="${factura.iva}" /></td>
 					<td><c:out value="${factura.precioTotalConIva}" /></td>
-					<td><c:out value="${factura.pagado}" /></td>
 					
 					<c:if test="${factura.pagado} == false">
 					<td><spring:url
@@ -47,9 +44,11 @@
 	<table id="lineasFacturasTable" class="table table-striped">
 		<thead>
 			<tr>
-				<th>Cantidad</th>
+				<th>Unidades</th>
 				<th>Descripcion</th>
 				<th>Precio unitario</th>
+				<th>Precio total </th>
+				<th>Servicio al que corresponde </th>
 			</tr>
 		</thead>
 		<tbody>
@@ -58,6 +57,8 @@
 					<td><c:out value="${lineaFactura.cantidad}" /></td>
 					<td><c:out value="${lineaFactura.descripcion}" /></td>
 					<td><c:out value="${lineaFactura.precioUnitario}" /></td>
+					<td><c:out value="${lineaFactura.precioUnitario * lineaFactura.cantidad}" /></td>
+					<td><c:out value="${lineaFactura.servicio.id}" /></td>
 				</tr>
 				</c:forEach>
 		</tbody>

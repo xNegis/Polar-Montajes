@@ -1,7 +1,5 @@
 package org.springframework.samples.petclinic.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,24 +7,23 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "periodo_vacaciones")
 public class PeriodoVacaciones extends BaseEntity {
-	
+
 	@Column(name = "FechaInicio")
 	protected String fechaInicio;
-	
+
 	@Column(name = "FechaFin")
-	
+
 	protected String fechaFin;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "Estado")
-	
+
 	protected Estado estado;
-	
+
 	public Estado getEstado() {
 		return estado;
 	}
@@ -38,7 +35,7 @@ public class PeriodoVacaciones extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "Vacaciones")
 	protected Vacaciones vacaciones;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "trabajador")
 	private Trabajador trabajador;
@@ -80,7 +77,5 @@ public class PeriodoVacaciones extends BaseEntity {
 //		return "PeriodoVacaciones [fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin 
 //				+ "]";
 //	}
-
-	
 
 }

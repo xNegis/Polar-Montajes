@@ -19,26 +19,17 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.LineaPedido;
-import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pedido;
 import org.springframework.samples.petclinic.model.Proveedor;
-import org.springframework.samples.petclinic.model.Trabajador;
-import org.springframework.samples.petclinic.service.AuthoritiesService;
 import org.springframework.samples.petclinic.service.LineaPedidoService;
-import org.springframework.samples.petclinic.service.OwnerService;
 import org.springframework.samples.petclinic.service.PedidoService;
 import org.springframework.samples.petclinic.service.ProveedorService;
-import org.springframework.samples.petclinic.service.TrabajadoresService;
-import org.springframework.samples.petclinic.service.VetService;
-import org.springframework.samples.petclinic.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * @author Juergen Hoeller
@@ -49,19 +40,17 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class PedidoController {
 
-
 	private final PedidoService pedidoService;
 	private final LineaPedidoService lineaPedidoService;
 	private final ProveedorService proveedorService;
 
 	@Autowired
-	public PedidoController(PedidoService pedidoService,LineaPedidoService lineaPedidoService
-			,ProveedorService proveedorService) {
+	public PedidoController(PedidoService pedidoService, LineaPedidoService lineaPedidoService,
+			ProveedorService proveedorService) {
 		this.pedidoService = pedidoService;
-		this.lineaPedidoService=lineaPedidoService;
-		this.proveedorService=proveedorService;
+		this.lineaPedidoService = lineaPedidoService;
+		this.proveedorService = proveedorService;
 	}
-
 
 	@GetMapping(value = "/pedidos")
 	public String initCreationForm(Map<String, Object> model) {
@@ -70,78 +59,77 @@ public class PedidoController {
 		model.put("pedidos", pedidos);
 		return "pedidos/pedidosList";
 	}
-	
-	
+
 	@GetMapping(value = "/pedidos/{pedidoId}")
-	public String initCreationForm2(@PathVariable("pedidoId") String pedidoId,Map<String, Object> model) {
+	public String initCreationForm2(@PathVariable("pedidoId") String pedidoId, Map<String, Object> model) {
 		List<LineaPedido> pedidos = this.pedidoService.findLineasPedidoPorPedido(Integer.parseInt(pedidoId));
 
 		model.put("pedidos", pedidos);
 		return "pedidos/lineaPedidoPedidoX";
 	}
 
-
 	@GetMapping(value = "/pedidos/pedidosEligeProveedor")
 	public String nuevoTrabajador(Map<String, Object> model) {
-		
+
 		model.put("proveedor", new Proveedor());
 		return "pedidos/eligeProveedor";
 	}
 
-	
 	@PostMapping(value = "/pedidos/pedidosEligeProveedor")
-	public String nuevoTrabajador2(Proveedor proveedor,Map<String, Object> model) {
+	public String nuevoTrabajador2(Proveedor proveedor, Map<String, Object> model) {
 		System.out.println(proveedor);
-		return "redirect:/pedidos/NP/"+proveedor.getId();
+		return "redirect:/pedidos/NP/" + proveedor.getId();
 	}
-	
-	
+
 	@GetMapping(value = "/pedidos/NP/{provId}")
-	public String initCreationForm35(@PathVariable("provId") String provId,Map<String, Object> model) {
+	public String initCreationForm35(@PathVariable("provId") String provId, Map<String, Object> model) {
 		Pedido pedido = new Pedido();
 		pedido.setFecha(LocalDate.now().toString());
-		pedido.setId(this.pedidoService.findAll().size()+1);
+		pedido.setId(this.pedidoService.findAll().size() + 1);
 		pedido.setProveedor(this.proveedorService.findById(Integer.parseInt(provId)));
+		pedido.setPagado(false);
 		this.pedidoService.savePedido(pedido);
 		return "redirect:/pedidos/nuevoPedido";
 	}
-	
+
 	@GetMapping(value = "/pedidos/nuevoPedido")
 	public String initCreationForm66(Map<String, Object> model) {
-		Pedido pedido =this.pedidoService.findPedido(this.pedidoService.findAll().size()).get();
-	
+		Pedido pedido = this.pedidoService.findPedido(this.pedidoService.findAll().size()).get();
+
 		List<LineaPedido> lp = this.pedidoService.findLineasPedidoPorPedido(pedido.getId());
-		Double precioTotal =0.;
-		for(int i=0;i<lp.size();i++) {
-			precioTotal= precioTotal+(lp.get(i).getProducto().getPrecio()*lp.get(i).getCantidad());
+		Double precioTotal = 0.;
+		for (int i = 0; i < lp.size(); i++) {
+			precioTotal = precioTotal + (lp.get(i).getProducto().getPrecio() * lp.get(i).getCantidad());
 		}
-		this.pedidoService.actualizarPrecioPedido(pedido.getId(),precioTotal);
+		this.pedidoService.actualizarPrecioPedido(pedido.getId(), precioTotal);
 //		System.out.println(lp);
 		model.put("lineaPedido", lp);
 		model.put("pedidoId", pedido.getId());
 		return "pedidos/nuevoPedido";
 	}
-	
+
 	@GetMapping(value = "/pedidos/nuevoPedido/nuevaLineaPedido/{pedidoId}")
-	public String initCreationForm3(@PathVariable("pedidoId") String pedidoId,Map<String, Object> model) {
+	public String initCreationForm3(@PathVariable("pedidoId") String pedidoId, Map<String, Object> model) {
 		model.put("pedidoId", pedidoId);
 		model.put("lineaPedido", new LineaPedido());
 		return "pedidos/nuevaLineaPedido";
 	}
+
 	@PostMapping(value = "/pedidos/nuevoPedido/nuevaLineaPedido/{pedidoId}")
-	public String initCreationForm5(@PathVariable("pedidoId") String pedidoId,LineaPedido lineaPedido,Map<String, Object> model) {
+	public String initCreationForm5(@PathVariable("pedidoId") String pedidoId, LineaPedido lineaPedido,
+			Map<String, Object> model) {
 		Pedido pedido = this.pedidoService.findPedido(Integer.parseInt(pedidoId)).get();
 		lineaPedido.setPedido(pedido);
 		this.lineaPedidoService.saveLineaPedido(lineaPedido);
 		return "redirect:/pedidos/nuevoPedido";
 	}
+
 	@GetMapping(value = "/pedidos/deletePedido/{pedidoId}")
-	public String initCreationForm533(@PathVariable("pedidoId") String pedidoId,LineaPedido lineaPedido,Map<String, Object> model) {
+	public String initCreationForm533(@PathVariable("pedidoId") String pedidoId, LineaPedido lineaPedido,
+			Map<String, Object> model) {
 		this.pedidoService.deleteById(Integer.parseInt(pedidoId));
-		
+
 		return "redirect:/pedidos/nuevoPedido";
 	}
-	
-
 
 }

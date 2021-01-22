@@ -51,5 +51,10 @@
 		<spring:url value="/nuevoservicio" var="servicioUrl">
 						</spring:url> <a  class="button" href="${fn:escapeXml(servicioUrl)}">Dar de alta nuevo servicio</a> 
 					</sec:authorize>
+					
+		<sec:authorize access="hasAuthority('gerente')">
+		<spring:url value="/terminarServicio" var="servicioUrl">
+						</spring:url> <a  class="button" href="${fn:escapeXml(servicioUrl)}">Terminar servicio</a> 
+					</sec:authorize>
 
 </petclinic:layout>

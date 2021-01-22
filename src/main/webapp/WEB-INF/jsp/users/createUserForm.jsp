@@ -12,17 +12,25 @@
     </h2>
     <form:form modelAttribute="user" class="form-horizontal" id="add-owner-form">
         <div class="form-group has-feedback">
-            <petclinic:inputField label="Username " name="username"/>
+            <petclinic:inputField label="Nombre y apellidos" name="username"/>
             <petclinic:inputField label="DNI" name="dni"/>
-            <petclinic:inputField label="Password" name="password"/>
-       
+            <petclinic:inputField label="Contraseña" name="password"/>
+            <input type="text" id="lname" name="lname" placeholder="Confirmar contraseña"><br><br>
+            <input type="text" id="lname" name="lname" placeholder="Telefono"><br><br>
+            <input type="text" id="lname" name="lname" placeholder="Correo"><br><br>
+            <input type="text" id="lname" name="lname" placeholder="Direccion"><br><br>
+            <input type="text" id="lname" name="lname" placeholder="Codigo Postal"><br><br>
         </div>
+        
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
             
-                        <button class="btn btn-default" type="submit">Add User</button>
+                        <button class="btn btn-default" type="submit">Registrarme</button>
                 
             </div>
         </div>
     </form:form>
+    
+   
+    
 </petclinic:layout>

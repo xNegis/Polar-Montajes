@@ -36,12 +36,15 @@
 							var="putOnSaleUrl">
 							<spring:param name="facturaId" value="${factura.id}" />
 						</spring:url> <a href="${fn:escapeXml(putOnSaleUrl)}">Visualizar factura</a></td>
+					<c:if test="${factura.pagado != 'true'}">
+					
 					<td><spring:url
 							value="/facturas/pagarFactura/{facturaId}"
 							var="putOnSaleUrl">
 							<spring:param name="facturaId" value="${factura.id}" />
 						</spring:url> <a href="${fn:escapeXml(putOnSaleUrl)}">Pagar factura</a></td>
-
+						
+					</c:if>
 				</tr>
 			</c:forEach>
 		</tbody>
